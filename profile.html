@@ -100,8 +100,7 @@
                 var token = result.credential.accessToken;
                 // The signed-in user info.
                 var user = result.user;
-                console.log(user.displayName);
-                console.log(user);
+                console.log(result);
                 writeUserData(user);
                 showWelcomeContainer(user);
                 changeUserData(user);
@@ -148,7 +147,6 @@
             Cookies.set("cookiesMail", user.email, { expires: 7 });
             Cookies.set("cookiesURL", user.photoURL, { expires: 7 });
             location.reload();
-            return false;
         };
 
         if (Cookies.get("logged")) {
