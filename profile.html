@@ -63,6 +63,16 @@
     </header>
     <main>
         <p id="welcomeText"></p>
+        <div id="googleinfo">
+            <p id="googletext">
+                We use Google for our logins to this website. Google provides a safe and fast method of logins. The only
+                information we store about you in our databases includes your full name, email and user uid; all three
+                associated with your Google account.
+            </p>
+            <div id="googlecontainer">
+                <img src="resources/google.png" alt="" id="googlelogo">
+            </div>
+        </div>
         <div id="login">
             <button type="button" id="gbutton" onclick="signIn();">Sign in with Google</button>
         </div>
@@ -104,6 +114,7 @@
                 writeUserData(user);
                 changeUserData(user);
                 makeCookies(user);
+                showWelcomeContainer();
                 location.reload();
 
 
