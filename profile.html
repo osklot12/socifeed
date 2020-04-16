@@ -147,6 +147,7 @@
             Cookies.set("cookiesName", user.displayName, { expires: 7 });
             Cookies.set("cookiesMail", user.email, { expires: 7 });
             Cookies.set("cookiesURL", user.photoURL, { expires: 7 });
+            location.reload();
         };
 
         if (Cookies.get("logged")) {
