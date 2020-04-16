@@ -162,4 +162,27 @@ body{
 
 #gbutton{
     font-size: 20px;
+    margin-bottom: 30px;
+}
+
+#userbox{
+    margin: 0 auto;
+    text-align: center;
+    width: 70%;
+    border-top: #2f3640 solid 2px;
+    border-right: #2f3640 solid 2px;
+    border-left: #2f3640 solid 2px;
+    border-bottom: #2f3640 solid 2px;
+}
+
+#user_name{
+    padding-top: 30px;
+}
+
+#user_email{
+    padding-top: 30px;
+}
+
+#profilepicture{
+    padding-top: 30px;
 }
