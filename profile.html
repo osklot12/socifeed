@@ -66,6 +66,15 @@
             <button type="button" id="gbutton" onclick="signIn();">Sign in with Google</button>
         </div>
         <div id="userbox">
+            <p id="user_name">
+
+            </p>
+            <p id="user_email">
+
+            </p>
+            <p id="user_picturecount">
+
+            </p>
             <img src="" alt="" id="profilepicture">
         </div>
     </main>
@@ -87,7 +96,8 @@
                 console.log(user);
                 writeUserData(user);
                 showWelcomeContainer(user);
-                
+                changeUserData(user);
+
 
                 // ...
             }).catch(function (error) {
@@ -115,9 +125,13 @@
             });
         };
 
-        document.getElementById("profilepicture").src = user.photoURL;
+        function changeUserData(user) {
+            document.getElementById("profilepicture").src = user.photoURL;
+            document.getElementById("user_name").innerHTML = ("Name: " + (user.displayName));
+            document.getElementById("user_email").innerHTML = ("Email: " + (user.email));
+        };
 
-        
+
 
 
     </script>
