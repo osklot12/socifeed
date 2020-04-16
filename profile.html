@@ -130,17 +130,31 @@
         function changeUserData(user) {
             document.getElementById("profilepicture").src = user.photoURL;
             document.getElementById("user_name").innerHTML = ("Name: " + "<b>" + (user.displayName) + "</b>");
-            document.getElementById("user_email").innerHTML = ("Email: " + "<b>" + (user.email) +"</b>");
+            document.getElementById("user_email").innerHTML = ("Email: " + "<b>" + (user.email) + "</b>");
         };
 
         // Lagrer cookie for å forbli pålogget
-        function makeCookies(user){
-        Cookies.set("uid", user.uid, { expires: 7 })
+        function makeCookies(user) {
+            Cookies.set("logged", "true", { expires: 7 });
+            Cookies.set("uid", user.uid, { expires: 7 });
+            Cookies.set("cookiesName", user.displayName, { expires: 7 });
+            Cookies.set("cookiesMail", user.email, { expires: 7 });
+            Cookies.set("cookiesURL", user.photoURL, { expires: 7 });
         };
 
-        function checkingCookies(){
+        if (Cookies.get("logged")) {
             var cookieuid = Cookies.get("uid");
+            var cookieName = Cookies.get("cookiesName");
+            var cookieMail = Cookies.get("cookiesMail");
+            var cookieURL = Cookies.get("cookiesURL");
+            document.getElementById("cookieURL").src = user.photoURL;
+            document.getElementById("cookieName").innerHTML = ("Name: " + "<b>" + (cookieName) + "</b>");
+            document.getElementById("cookieMail").innerHTML = ("Email: " + "<b>" + (cookieMail) + "</b>");
         };
+
+
+
+
 
 
     </script>
