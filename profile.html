@@ -121,17 +121,17 @@
             });
         };
 
-        // Endrer litt på siden for å vise at man er logget inn
-        function showWelcomeContainer(user) {
-            document.getElementById("welcomeText").innerHTML = ("Welcome, " + (user.displayName));
-        };
-
         function writeUserData(user) {
             firebase.firestore().collection('users').doc(user.uid).set({
                 name: user.displayName,
                 email: user.email,
                 photo: user.photoURL
             });
+        };
+
+        // Endrer litt på siden for å vise at man er logget inn
+        function showWelcomeContainer(user) {
+            document.getElementById("welcomeText").innerHTML = ("Welcome, " + (user.displayName));
         };
 
         function changeUserData(user) {
