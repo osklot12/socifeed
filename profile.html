@@ -127,8 +127,8 @@
 
         function changeUserData(user) {
             document.getElementById("profilepicture").src = user.photoURL;
-            document.getElementById("user_name").innerHTML = ("Name: " + <b>(user.displayName)</b>);
-            document.getElementById("user_email").innerHTML = ("Email: " + <b>(user.email)</b>);
+            document.getElementById("user_name").innerHTML = ("Name: " + "<b>" + (user.displayName) + "</b>");
+            document.getElementById("user_email").innerHTML = ("Email: " + "<b>" + (user.email) +"</b>");
         };
 
 
