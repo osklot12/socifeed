@@ -114,8 +114,9 @@
                 writeUserData(user);
                 changeUserData(user);
                 makeCookies(user);
-                showWelcomeContainer();
-                location.reload();
+                showWelcomeContainer(user);
+                checkCookies(user);
+                document.getElementById("googleinfo").style.display = "none";
 
 
                 // ...
@@ -159,18 +160,21 @@
             Cookies.set("cookiesURL", user.photoURL, { expires: 7 });
         };
 
-        if (Cookies.get("logged")) {
-            var cookieuid = Cookies.get("uid");
-            var cookieName = Cookies.get("cookiesName");
-            var cookieMail = Cookies.get("cookiesMail");
-            var cookieURL = Cookies.get("cookiesURL");
-            console.log(cookieName);
-            document.getElementById("profilepicture").src = cookieURL;
-            document.getElementById("user_name").innerHTML = ("Name: " + "<b>" + (cookieName) + "</b>");
-            document.getElementById("user_email").innerHTML = ("Email: " + "<b>" + (cookieMail) + "</b>");
-            document.getElementById("gbutton").style.display = "none";
-            document.getElementById("logoutbtn").style.display = "inline-block";
-            document.getElementById("userbox").style.display = "flex";
+        function checkCookies() {
+            if (Cookies.get("logged")) {
+                var cookieuid = Cookies.get("uid");
+                var cookieName = Cookies.get("cookiesName");
+                var cookieMail = Cookies.get("cookiesMail");
+                var cookieURL = Cookies.get("cookiesURL");
+                console.log(cookieName);
+                document.getElementById("profilepicture").src = cookieURL;
+                document.getElementById("user_name").innerHTML = ("Name: " + "<b>" + (cookieName) + "</b>");
+                document.getElementById("user_email").innerHTML = ("Email: " + "<b>" + (cookieMail) + "</b>");
+                document.getElementById("gbutton").style.display = "none";
+                document.getElementById("logoutbtn").style.display = "inline-block";
+                document.getElementById("userbox").style.display = "flex";
+                document.getElementById("googleinfo").style.display = "none";
+            };
         };
 
         function logOut() {
@@ -186,7 +190,10 @@
             document.getElementById("profilepicture").src = "";
             document.getElementById("user_name").innerHTML = ("Name: ");
             document.getElementById("user_email").innerHTML = ("Email: ");
+            document.getElementById("googleinfo").style.display = "flex";
         };
+
+        checkCookies();
 
     </script>
 
