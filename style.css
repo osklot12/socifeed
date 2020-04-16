@@ -168,6 +168,8 @@ body{
 #logoutbtn{
     font-size: 20px;
     display: none;
+    margin: auto;
+    text-align: center;
 }
 
 #userbox{
@@ -208,6 +210,7 @@ body{
 }
 
 #profilepicture{
-    width: 30vw;
-    display: flex;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
