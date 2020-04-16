@@ -82,6 +82,7 @@
                 var user = result.user;
                 console.log(user.displayName);
                 writeUserData(user);
+                showWelcomeContainer(user);
                 
 
                 // ...
@@ -98,7 +99,7 @@
         };
 
         // Endrer litt på siden for å vise at man er logget inn
-        function showWelcomeContainer() {
+        function showWelcomeContainer(user) {
             document.getElementById("welcomeText").innerHTML = ("Welcome, " + (user.displayName));
         };
 
@@ -110,7 +111,7 @@
             console.log(writeUserData());
         };
 
-        showWelcomeContainer();
+        
 
 
     </script>
