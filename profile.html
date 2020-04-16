@@ -67,16 +67,23 @@
             <button type="button" id="gbutton" onclick="signIn();">Sign in with Google</button>
         </div>
         <div id="userbox">
-            <p id="user_name">
-                Name:
-            </p>
-            <p id="user_email">
-                Email:
-            </p>
+            <div id="userboxtext">
+                <p id="user_name">
+                    Name:
+                </p>
+                <p id="user_email">
+                    Email:
+                </p>
+            </div>
             <p id="user_picturecount">
 
             </p>
-            <img src="" alt="" id="profilepicture">
+            <div id="userboxpicture">
+                <img src="" alt="" id="profilepicture">
+            </div>
+        </div>
+        <div id="logout">
+            <button type="button" id="logoutbtn" onclick="logOut();">Log out</button>
         </div>
     </main>
     <script>
@@ -151,8 +158,21 @@
             document.getElementById("profilepicture").src = cookieURL;
             document.getElementById("user_name").innerHTML = ("Name: " + "<b>" + (cookieName) + "</b>");
             document.getElementById("user_email").innerHTML = ("Email: " + "<b>" + (cookieMail) + "</b>");
+            document.getElementById("gbutton").style.display = "none";
+            document.getElementById("logoutbtn").style.display = "inline-block";
         };
 
+        function logOut(){
+            Cookies.remove("uid");
+            Cookies.remove("cookiesName");
+            Cookies.remove("cookiesMail");
+            Cookies.remove("cookiesURL");
+            document.getElementById("logoutbtn").style.display = "none";
+            document.getElementById("gbutton").style.display = "inline-block";
+            document.getElementById("profilepicture").src = "";
+            document.getElementById("user_name").innerHTML = ("Name: ");
+            document.getElementById("user_email").innerHTML = ("Email: ");
+        };
 
 
 
