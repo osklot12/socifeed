@@ -148,6 +148,7 @@
             Cookies.set("cookiesMail", user.email, { expires: 7 });
             Cookies.set("cookiesURL", user.photoURL, { expires: 7 });
             location.reload();
+            return false;
         };
 
         if (Cookies.get("logged")) {
@@ -163,7 +164,7 @@
             document.getElementById("logoutbtn").style.display = "inline-block";
         };
 
-        function logOut(){
+        function logOut() {
             Cookies.remove("uid");
             Cookies.remove("cookiesName");
             Cookies.remove("cookiesMail");
@@ -173,7 +174,6 @@
             document.getElementById("profilepicture").src = "";
             document.getElementById("user_name").innerHTML = ("Name: ");
             document.getElementById("user_email").innerHTML = ("Email: ");
-            location.reload();
         };
 
 
