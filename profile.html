@@ -61,7 +61,7 @@
         </div>
     </header>
     <main>
-        <h2 id="welcomeText"></h2>
+        <h2 id="welcomeText">Welcome</h2>
         <div id="login">
             <button type="button" id="gbutton" onclick="signIn();">Sign in with Google</button>
         </div>
@@ -80,6 +80,7 @@
                 var token = result.credential.accessToken;
                 // The signed-in user info.
                 var user = result.user;
+                console.log(user.displayName);
                 writeUserData();
                 showWelcomeContainer();
                 
@@ -104,7 +105,7 @@
             $("#welcomeText").html("Hello" + user.displayName);
         };
 
-        function writeUserData(userId, name, email, imageUrl) {
+        function writeUserData(userId, name, email) {
             firebase.database().ref('users/' + useruid).set({
                 name: user.displayName,
                 email: user.email,
