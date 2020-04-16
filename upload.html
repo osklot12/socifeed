@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Socifeed</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/04dbcf7e87.js" crossorigin="anonymous"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCtEQ0WQMgr4AHTjc0AsV8SqHQMcuh63BM",
+            authDomain: "informasjonsteknologi-1-15c1e.firebaseapp.com",
+            databaseURL: "https://informasjonsteknologi-1-15c1e.firebaseio.com",
+            projectId: "informasjonsteknologi-1-15c1e",
+            storageBucket: "informasjonsteknologi-1-15c1e.appspot.com",
+            messagingSenderId: "183718111388",
+            appId: "1:183718111388:web:22ed9bacef400d44aaa559",
+            measurementId: "G-XSDFS2SFVJ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+</head>
+
+<body>
+    <header>
+        <!--Lager en top header som skal inneholde logo, søkefelt, knapp for opplastning av bilder og profilen din-->
+        <div class="top_header">
+            <img src="resources/logo.png" alt="" class="logo">
+            <div class="searchbar">
+                <input type="text" class="searchtxt" name="" placeholder="Find users">
+                <a class="searchbtn" href="">
+                    <i class="fas fa-search"></i>
+                </a>
+            </div>
+            <div class="upload_button">
+                <a href="upload.html">
+                    <label for="fileInput">
+                        <i class="fas fa-upload"></i>
+                    </label>
+                </a>
+            </div>
+            <a class="profilebtn" href="profile.html">
+                <i class="fas fa-user"></i>
+            </a>
+        </div>
+    </header>
+    <main>
+        <div class="uploadbox">
+            <div class="uploadinfo">
+                <h3>
+                    Uploading your photos
+                </h3>
+                <p>
+                    In this form you will be able to upload your photos from your computer. The photos is then stored
+                    using Firebase Storage, and will be permanently saved until the picture is deleted from the
+                    database. Keep in mind that your photo will be saved under your profile, so your uploads will not be anonymous.
+                </p>
+            </div>
+            <div class="uploadform">
+                <h3>
+                    Upload form
+                </h3>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

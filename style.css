@@ -1,0 +1,152 @@
+body{
+    background: #fff;
+    font-family: 'Nunito', sans-serif;
+}
+
+.top_header{
+    width: 100%;
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 25px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 2px solid #2f3640;
+}
+
+.logo{
+    height: 25px;
+    padding-left: 10px;
+    top: 50%;
+}
+
+.upload_button > input{
+    display: none;
+}
+
+.upload_button label{
+    cursor: pointer;
+    font-size: 30px;
+    position: absolute;
+    padding-right: 70px;
+    color: #2f3640;
+    right: 0%;
+}
+
+.upload_button label:hover{
+    color: #3e444d;
+}
+
+.profilebtn{
+    color: #2f3640;
+    position: absolute;
+    right: 0%;
+    padding-right: 20px;
+    font-size: 30px;
+}
+
+.profilebtn:hover{
+    color: #3e444d;
+}
+
+.searchbar{
+    transform: translate(-50%, -50%);
+    background: #2f3640;
+    height: 25px;
+    border-radius: 40px;
+    padding: 10px;
+    float: none;
+    position: absolute;
+    top: 49%;
+    left: 49%;
+}
+
+.searchbtn{
+    color: #fff;
+    float: right;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.searchtxt{
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 25px;
+    width: 0px;
+    font-weight: bold;
+}
+
+.searchbar:hover > .searchtxt{
+    width: 150px;
+    padding: 0 6px;
+}
+
+.searchbtn > i {
+    font-size: 30px;
+}
+
+.sub_header{
+    width: 30%;
+    border-bottom: 2px solid #2f3640;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.sub_header a{
+    text-decoration: none;
+    color: #2f3640;
+    font-size: 20px;
+    padding-right: 35px;
+    padding-left: 35px;
+    margin: 0 auto;
+}
+
+.sub_header a:hover{
+    color: #3e444d;
+    text-decoration: underline;
+}
+
+.uploadbox{
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.uploadinfo{
+    padding: 40px;
+    text-align: center;
+    color: #fff;
+    background-color: #2f3640;
+    flex-basis: 400px;
+    flex-shrink: 1;
+    border-top: #2f3640 solid 2px;
+    border-right: #2f3640 solid 2px;
+    border-left: #2f3640 solid 2px;
+    border-bottom: #2f3640 solid 2px;
+}
+
+.uploadform{
+    padding: 40px;
+    text-align: center;
+    color: #2f3640;
+    flex-basis: 400px;
+    border-top: #2f3640 solid 2px;
+    border-right: #2f3640 solid 2px;
+    border-left: #2f3640 solid 2px;
+    border-bottom: #2f3640 solid 2px;
+}
