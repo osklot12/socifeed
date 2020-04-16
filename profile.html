@@ -102,9 +102,6 @@
                 var user = result.user;
                 console.log(result);
                 writeUserData(user);
-                showWelcomeContainer(user);
-                changeUserData(user);
-                makeCookies(user);
 
 
                 // ...
@@ -177,6 +174,10 @@
             document.getElementById("user_name").innerHTML = ("Name: ");
             document.getElementById("user_email").innerHTML = ("Email: ");
         };
+
+        showWelcomeContainer(user);
+        changeUserData(user);
+        makeCookies(user);
 
 
 
