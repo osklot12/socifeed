@@ -166,23 +166,37 @@ body{
 }
 
 #userbox{
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#userboxtext{
+    height: 300px;
+    padding: 40px;
     text-align: center;
-    width: 70%;
+    color: #fff;
+    background-color: #2f3640;
+    flex-basis: 400px;
+    flex-shrink: 1;
     border-top: #2f3640 solid 2px;
     border-right: #2f3640 solid 2px;
     border-left: #2f3640 solid 2px;
     border-bottom: #2f3640 solid 2px;
 }
 
-#user_name{
-    padding-top: 30px;
+#userboxpicture{
+    height: 300px;
+    padding: 40px;
+    text-align: center;
+    color: #2f3640;
+    flex-basis: 400px;
+    border-top: #2f3640 solid 2px;
+    border-right: #2f3640 solid 2px;
+    border-left: #2f3640 solid 2px;
+    border-bottom: #2f3640 solid 2px;
 }
 
 #user_email{
-    padding-top: 30px;
-}
-
-#profilepicture{
-    padding-top: 30px;
+    padding-top:30px;
 }
