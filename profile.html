@@ -147,6 +147,7 @@
             var cookieName = Cookies.get("cookiesName");
             var cookieMail = Cookies.get("cookiesMail");
             var cookieURL = Cookies.get("cookiesURL");
+            console.log(cookieName);
             document.getElementById("cookieURL").src = cookieURL;
             document.getElementById("cookieName").innerHTML = ("Name: " + "<b>" + (cookieName) + "</b>");
             document.getElementById("cookieMail").innerHTML = ("Email: " + "<b>" + (cookieMail) + "</b>");
