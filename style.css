@@ -171,6 +171,7 @@ body{
 }
 
 #userbox{
+    margin-top: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -207,5 +208,6 @@ body{
 }
 
 #profilepicture{
-    width: 20vw;
+    width: 30vw;
+    display: flex;
 }
