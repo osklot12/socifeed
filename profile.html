@@ -60,19 +60,27 @@
         </div>
     </header>
     <main>
-        <button type="button" onclick="signIn();">Sign in with Google</button>
+        <h2 id="welcomeText"></h2>
+        <div id="login">
+            <button type="button" id="gbutton" onclick="signIn();">Sign in with Google</button>
+        </div>
     </main>
     <script>
 
         var provider = new firebase.auth.GoogleAuthProvider();
+        var database = firebase.database();
+        var user;
 
         // Lager en funksjon som skriver i consolen når knappen trykkes på
         function signIn() {
+            // Fant kode firebase som gir deg et pop-up vindu til google innlogging
             firebase.auth().signInWithPopup(provider).then(function (result) {
                 // This gives you a Google Access Token. You can use it to access the Google API.
                 var token = result.credential.accessToken;
                 // The signed-in user info.
                 var user = result.user;
+                showWelcomeContainer();
+
                 // ...
             }).catch(function (error) {
                 // Handle Errors here.
@@ -85,6 +93,21 @@
                 // ...
             });
         };
+
+        // Endrer litt på siden for å vise at man er logget inn
+        function showWelcomeContainer() {
+            $("#login").hide();
+            $("#welcome").show();
+            $("#welcomeText").html("Hello" + user.displayName);
+        };
+
+        function writeUserData(userId, name, email, imageUrl) {
+            firebase.database().ref('users/' + useruid).set({
+                name: user.displayName,
+                email: user.email,
+                profile_picture: imageUrl
+            });
+        }
 
 
     </script>
