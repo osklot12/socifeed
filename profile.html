@@ -103,7 +103,7 @@
         };
 
         function writeUserData(userId, name, email) {
-            firebase.firestore().ref('users/' + useruid).set({
+            firebase.firestore().collection('users').doc(useruid).set({
                 name: user.displayName,
                 email: user.email,
             });
