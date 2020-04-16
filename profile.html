@@ -81,7 +81,6 @@
                 // The signed-in user info.
                 var user = result.user;
                 console.log(user.displayName);
-                writeUserData();
                 showWelcomeContainer();
                 
 
@@ -102,7 +101,7 @@
         function showWelcomeContainer() {
             $("#login").hide();
             $("#welcome").show();
-            $("#welcomeText").html("Hello" + user.displayName);
+            document.getElementById("welcomeText").innerHTML = ("Welcome" + user.displayName);
         };
 
         function writeUserData(userId, name, email) {
