@@ -81,6 +81,7 @@
                 // The signed-in user info.
                 var user = result.user;
                 console.log(user.displayName);
+                console.log(result);
                 writeUserData();
                 
 
@@ -99,7 +100,7 @@
 
         // Endrer litt på siden for å vise at man er logget inn
         function showWelcomeContainer() {
-            document.getElementById("welcomeText").innerHTML = ("Phitte" + user.displayName);
+            document.getElementById("welcomeText").innerHTML = ("Welcome, " + (user.displayName));
         };
 
         function writeUserData(userId, name, email) {
