@@ -18,6 +18,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 
     <script>
         // Your web app's Firebase configuration
@@ -97,6 +98,7 @@
                 writeUserData(user);
                 showWelcomeContainer(user);
                 changeUserData(user);
+                makeCookies(user);
 
 
                 // ...
@@ -131,6 +133,14 @@
             document.getElementById("user_email").innerHTML = ("Email: " + "<b>" + (user.email) +"</b>");
         };
 
+        // Lagrer cookie for å forbli pålogget
+        function makeCookies(user){
+        Cookies.set("uid", user.uid, { expires: 7 })
+        };
+
+        function checkingCookies(){
+            var cookieuid = Cookies.get("uid");
+        };
 
 
     </script>
