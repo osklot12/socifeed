@@ -65,6 +65,9 @@
         <div id="login">
             <button type="button" id="gbutton" onclick="signIn();">Sign in with Google</button>
         </div>
+        <div id="userbox">
+            <img src="" alt="" id="profilepicture">
+        </div>
     </main>
     <script>
 
@@ -111,6 +114,8 @@
                 photo: user.photoURL
             });
         };
+
+        document.getElementById("profilepicture").src = user.photoURL;
 
         
 
