@@ -81,6 +81,7 @@
                 // The signed-in user info.
                 var user = result.user;
                 console.log(user.displayName);
+                console.log(user);
                 writeUserData(user);
                 showWelcomeContainer(user);
                 
@@ -108,7 +109,6 @@
                 name: user.displayName,
                 email: user.email,
             });
-            console.log(user);
         };
 
         
