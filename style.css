@@ -165,11 +165,15 @@ body{
     margin-bottom: 30px;
 }
 
-#logoutbtn{
-    font-size: 20px;
-    display: none;
+#logout{
     margin: auto;
     text-align: center;
+}
+
+#logoutbtn{
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 #userbox{
