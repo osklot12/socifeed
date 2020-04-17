@@ -184,7 +184,10 @@
         function writePhotoData(filename) {
             var cookiesName = Cookies.get("cookiesName");
             var cookiesMail = Cookies.get("cookiesMail");
-            let photoCount = await chatkanaler.doc(data.chatkanal).get();
+            let db = firebase.firestore();
+            let user = db.collection("users");
+            let userid = Cookies.get("uid")
+            let photoCount = user.userid.data("photocount");
             let newPhotoCount = (photoCount + 1);
             firebase.firestore().collection('photos').doc(filename).set({
                 uploader: cookiesName,
