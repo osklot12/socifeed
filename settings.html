@@ -55,9 +55,6 @@
             <div id="savechanges">
                 <label for="" id="savebutton" onclick="saveChanges();">Save changes</label>
             </div>
-            <div id="savechanges">
-                <label for="" id="savedbutton">Changes saved!</label>
-            </div>
         </div>
     </main>
 
@@ -80,11 +77,13 @@
         document.getElementById("bioinput").value = (bio);
 
         function saveChanges() {
+            var username = document.getElementById("nameinput").value;
+            var biography = document.getElementById("bioinput").value;
             firebase.firestore().collection('users').doc(userid).set({
-                name: username,
-                bio: bio
+                name: name,
+                bio: biography
             });
-            document.getElementById("savechanges").style.display = "none";
+            alert("Changes saved!")
         };
 
         getData();
