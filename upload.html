@@ -9,12 +9,20 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/04dbcf7e87.js" crossorigin="anonymous"></script>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-storage.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
 
     <script>
         // Your web app's Firebase configuration
@@ -31,6 +39,7 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
     </script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
@@ -65,16 +74,110 @@
                 <p>
                     In this form you will be able to upload your photos from your computer. The photos is then stored
                     using Firebase Storage, and will be permanently saved until the picture is deleted from the
-                    database. Keep in mind that your photo will be saved under your profile, so your uploads will not be anonymous.
+                    database. Keep in mind that your photo will be saved under your profile, so your uploads will not be
+                    anonymous.
                 </p>
             </div>
             <div class="uploadform">
                 <h3>
                     Upload form
                 </h3>
+                <div class="choosefile">
+                    <div class="dropdown">
+                        <button class="dropbtn" id="dropdown">Choose category</button>
+                        <div class="dropdown-content">
+                            <a href="#" onclick="none();">None</a>
+                            <a href="#" onclick="lifeStyle();">Lifestyle</a>
+                            <a href="#" onclick="nature();">Nature</a>
+                            <a href="#" onclick="food();">Food</a>
+                            <a href="#" onclick="sports();">Sports</a>
+                            <a href="#" onclick="gaming();">Gaming</a>
+                        </div>
+                    </div>
+                    <label for=fileInput class="upload-group">
+                        <i class="fas fa-upload">
+                            <input type="file" id="fileInput">
+                        </i>
+                    </label>
+                    <button id="submitfile" onclick="uploadFile();">Submit</button>
+                </div>
+                <p>
+                    Upload photos to our database using this form. If none of the categories listed applies to your
+                    photo, then choose "none". Keep in mind that explicit content will be removed.
+                </p>
             </div>
         </div>
     </main>
+    <script>
+
+        function none() {
+            document.getElementById("dropdown").innerHTML = ("None");
+            var photocategory = "none"
+            console.log(photocategory);
+        };
+        function lifeStyle() {
+            document.getElementById("dropdown").innerHTML = ("Lifestyle");
+            var photocategory = "lifestyle"
+            console.log(photocategory);
+        };
+        function nature() {
+            document.getElementById("dropdown").innerHTML = ("Nature");
+            var photocategory = "nature"
+            console.log(photocategory);
+        };
+        function food() {
+            document.getElementById("dropdown").innerHTML = ("Food");
+            var photocategory = "food"
+            console.log(photocategory);
+        };
+        function sports() {
+            document.getElementById("dropdown").innerHTML = ("Sports");
+            var photocategory = "sports"
+            console.log(photocategory);
+        };
+        function gaming() {
+            document.getElementById("dropdown").innerHTML = ("Gaming");
+            var photocategory = "gaming"
+            console.log(photocategory);
+        };
+
+
+
+ //       var input = document.getElementById('fileInput');
+ //       alert(path);
+ //       input.addEventListener('change', showFileName);
+////       function showFileName(event) {
+
+ //           input = event.srcElement;
+
+  //          fileName = input.files[0].name;
+  //          console.log(fileName);
+  //      };
+
+        function uploadFile() {
+            var image = document.getElementById("fileInput").files[0];
+            var filename = image.name;
+            console.log(filename);
+            var storageRef = firebase.storage().ref("/uploads" + filename);
+            var uploadTask = storageRef.put(image);
+
+            uploadTask.on('state_changed', function (snapshot){
+                var progress = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+                console.log("Upload is " + progress + "% done.");
+            },function (error) {
+                // Viser feilmelding i consolen
+                console.log(error.message);
+            },function () {
+                // Håndterer suksessfulle opplastninger
+                uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+                    // Her får du bildelinken
+                    console.log(downloadURL);
+                });
+            });
+        };
+
+
+    </script>
 </body>
 
 </html>
