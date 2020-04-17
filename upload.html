@@ -171,7 +171,7 @@
                         writePhotoData(filename);
                         document.getElementById("uploadtitle").innerHTML = ("Upload form");
                         alert("The photo was successfully uploaded!")
-                        document.getElementById("fileInput").files[0] = "";
+                        location.reload();
                     });
                 });
             } else {
