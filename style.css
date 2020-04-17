@@ -474,6 +474,7 @@ main{
     grid-gap: 40px;
     justify-content: center;
     margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 main > article > img{
