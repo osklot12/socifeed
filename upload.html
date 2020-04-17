@@ -46,7 +46,9 @@
     <header>
         <!--Lager en top header som skal inneholde logo, søkefelt, knapp for opplastning av bilder og profilen din-->
         <div class="top_header">
-            <img src="resources/logo.png" alt="" class="logo">
+            <a href="index.html">
+                <img src="resources/logo.png" alt="" class="logo">
+            </a>
             <div class="searchbar">
                 <input type="text" class="searchtxt" name="" placeholder="Find users">
                 <a class="searchbtn" href="">
@@ -141,7 +143,7 @@
             console.log(photocategory);
         };
 
-        function displayPhotoName(){
+        function displayPhotoName() {
             var image = document.getElementById("fileInput").files[0];
             var filename = image.name;
             document.getElementById("uploadtitle").innerHTML = ("Upload form (" + filename + ")");
