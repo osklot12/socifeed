@@ -184,7 +184,6 @@
         function writePhotoData(filename) {
             var cookiesName = Cookies.get("cookiesName");
             var cookiesMail = Cookies.get("cookiesMail");
-            let newPhotoCount = (photoCount + 1);
             firebase.firestore().collection('photos').doc(filename).set({
                 uploader: cookiesName,
                 email: cookiesMail,
