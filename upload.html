@@ -79,7 +79,7 @@
                 </p>
             </div>
             <div class="uploadform">
-                <h3>
+                <h3 id="uploadtitle">
                     Upload form
                 </h3>
                 <div class="choosefile">
@@ -96,7 +96,7 @@
                     </div>
                     <label for=fileInput class="upload-group">
                         <i class="fas fa-upload">
-                            <input type="file" id="fileInput">
+                            <input type="file" id="fileInput" onchange="displayPhotoName();">
                         </i>
                     </label>
                     <button id="submitfile" onclick="uploadFile();">Submit</button>
@@ -141,19 +141,11 @@
             console.log(photocategory);
         };
 
-
-
-        //       var input = document.getElementById('fileInput');
-        //       alert(path);
-        //       input.addEventListener('change', showFileName);
-        ////       function showFileName(event) {
-
-        //           input = event.srcElement;
-
-        //          fileName = input.files[0].name;
-        //          console.log(fileName);
-        //      };
-
+        function displayPhotoName(){
+            var image = document.getElementById("fileInput").files[0];
+            var filename = image.name;
+            document.getElementById("uploadtitle").innerHTML = ("Upload form (" + filename + ")");
+        };
 
         function uploadFile() {
             // Sjekker om brukeren er innlogget ved å sjekke om cookien "logged" finnes
