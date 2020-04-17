@@ -57,7 +57,7 @@
     <script>
 
         let db = firebase.firestore();
-        let collection = db.collection("users");
+        let collection = db.collection("bios");
 
         userid = Cookies.get("uid")
         getData();
@@ -75,8 +75,8 @@
 
         function saveChanges() {
             var biography = document.getElementById("bioinput").value;
-            firebase.firestore().collection('users').doc(userid).update({
-                bio: biography
+            firebase.firestore().collection('bios').doc(userid).update({
+                bio: biography,
             });
             alert("Changes saved!")
         };
