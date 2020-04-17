@@ -45,10 +45,6 @@
     <main>
         <div id="settingsbox">
             <h3>
-                Name
-            </h3>
-            <input type="text" maxlength="25" placeholder="Write your name here" id="nameinput">
-            <h3>
                 Biography
             </h3>
             <input type="text" maxlength="80" placeholder="Write your bio here" id="bioinput">
@@ -64,20 +60,18 @@
         let collection = db.collection("users");
 
         userid = Cookies.get("uid")
+        getData();
 
         async function getData() {
             let document = await collection.doc(userid).get();
             let data = document.data();
-            bio = data.bio;
-            name = data.name;            
-            console.log(name);
+            bio = data.bio;          
+            console.log(bio);
         };
 
-        document.getElementById("nameinput").value = (name);
         document.getElementById("bioinput").value = (bio);
 
         function saveChanges() {
-            var username = document.getElementById("nameinput").value;
             var biography = document.getElementById("bioinput").value;
             firebase.firestore().collection('users').doc(userid).update({
                 name: username,
@@ -85,8 +79,6 @@
             });
             alert("Changes saved!")
         };
-
-        getData();
 
 
 
