@@ -79,7 +79,7 @@
         function saveChanges() {
             var username = document.getElementById("nameinput").value;
             var biography = document.getElementById("bioinput").value;
-            firebase.firestore().collection('users').doc(userid).put({
+            firebase.firestore().collection('users').doc(userid).update({
                 name: name,
                 bio: biography
             });
