@@ -151,7 +151,7 @@
             // Sjekker om brukeren er innlogget ved å sjekke om cookien "logged" finnes
             if (Cookies.get("logged")) {
                 var image = document.getElementById("fileInput").files[0];
-                filename = image.name;
+                var filename = image.name;
                 console.log(filename);
                 var storageRef = firebase.storage().ref("/uploads/" + filename);
                 var uploadTask = storageRef.put(image);
@@ -170,7 +170,6 @@
                         photoURL = downloadURL;
                         writePhotoData(filename);
                         document.getElementById("uploadtitle").innerHTML = ("Upload form");
-                        alert("The photo was successfully uploaded!");
                     });
                 });
             } else {
@@ -191,7 +190,7 @@
                 category: photocategory,
                 URL: photoURL
             });
-            location.reload();
+            alert("The photo was successfully uploaded!");
         };
 
 
