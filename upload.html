@@ -185,9 +185,10 @@
             var cookiesName = Cookies.get("cookiesName");
             var cookiesMail = Cookies.get("cookiesMail");
             let db = firebase.firestore();
-            let user = db.collection("users");
+            let users = db.collection("users");
             let userid = Cookies.get("uid")
-            let photoCount = user.userid.data("photocount");
+            let photoCount = users.doc(userid).data("photocount");
+            console.log(photoCount);
             let newPhotoCount = (photoCount + 1);
             firebase.firestore().collection('photos').doc(filename).set({
                 uploader: cookiesName,
@@ -198,7 +199,7 @@
                 URL: photoURL
             });
             firebase.firestore().collection('users').doc(user.uid).set({
-                photocount: newPhotoCount
+                photocount: newPhotoCount + photoCount
             });
         };
 
