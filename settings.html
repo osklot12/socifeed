@@ -69,12 +69,12 @@
             let document = await collection.doc(userid).get();
             let data = document.data();
             name = data.name;
-            bio = data.bio;
+            biophrase = data.bio;
             console.log(name);
         };
 
         document.getElementById("nameinput").value = (name);
-        document.getElementById("bioinput").value = (bio);
+        document.getElementById("bioinput").value = (biophrase);
 
         function saveChanges() {
             var username = document.getElementById("nameinput").value;
