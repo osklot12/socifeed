@@ -65,10 +65,11 @@
         async function getData() {
             let document = await collection.doc(userid).get();
             let data = document.data();
-            bio = data.bio;          
+            bio = data.bio;
             console.log(bio);
-            document.getElementById("bioinput").value = (bio);
         };
+
+        document.getElementById("bioinput") = (bio);
 
         
 
