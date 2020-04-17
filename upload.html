@@ -20,7 +20,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-storage.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 
 
 
@@ -143,36 +143,54 @@
 
 
 
- //       var input = document.getElementById('fileInput');
- //       alert(path);
- //       input.addEventListener('change', showFileName);
-////       function showFileName(event) {
+        //       var input = document.getElementById('fileInput');
+        //       alert(path);
+        //       input.addEventListener('change', showFileName);
+        ////       function showFileName(event) {
 
- //           input = event.srcElement;
+        //           input = event.srcElement;
 
-  //          fileName = input.files[0].name;
-  //          console.log(fileName);
-  //      };
+        //          fileName = input.files[0].name;
+        //          console.log(fileName);
+        //      };
+
 
         function uploadFile() {
-            var image = document.getElementById("fileInput").files[0];
-            var filename = image.name;
-            console.log(filename);
-            var storageRef = firebase.storage().ref("/uploads" + filename);
-            var uploadTask = storageRef.put(image);
+            // Sjekker om brukeren er innlogget ved å sjekke om cookien "logged" finnes
+            if (Cookies.get("logged")) {
+                var image = document.getElementById("fileInput").files[0];
+                var filename = image.name;
+                console.log(filename);
+                var storageRef = firebase.storage().ref("/uploads" + filename);
+                var uploadTask = storageRef.put(image);
 
-            uploadTask.on('state_changed', function (snapshot){
-                var progress = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
-                console.log("Upload is " + progress + "% done.");
-            },function (error) {
-                // Viser feilmelding i consolen
-                console.log(error.message);
-            },function () {
-                // Håndterer suksessfulle opplastninger
-                uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-                    // Her får du bildelinken
-                    console.log(downloadURL);
+                uploadTask.on('state_changed', function (snapshot) {
+                    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    console.log("Upload is " + progress + "% done.");
+                }, function (error) {
+                    // Viser feilmelding i consolen
+                    console.log(error.message);
+                }, function () {
+                    // Håndterer suksessfulle opplastninger
+                    uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+                        // Her får du bildelinken
+                        console.log(downloadURL);
+                        writePhotoData(filename);
+                    });
                 });
+            } else {
+                // Gir brukeren en feilmelding hvis han/hun ikke er logget inn
+                alert("You need to be signed in to upload photos. Please use the profile icon in the top right corner.")
+            };
+        };
+
+
+        function writePhotoData(filename) {
+            firebase.firestore().collection('photos').doc(filename).set({
+                uploader: cookiesName,
+                email: cookiesEmail,
+                timestamp: firebase.firestore.Timestamp.fromDate(new Date()),
+                likes: 0
             });
         };
 
