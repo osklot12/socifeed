@@ -67,14 +67,14 @@
             let data = document.data();
             bio = data.bio;          
             console.log(bio);
+            document.getElementById("bioinput").value = (bio);
         };
 
-        document.getElementById("bioinput").value = (bio);
+        
 
         function saveChanges() {
             var biography = document.getElementById("bioinput").value;
             firebase.firestore().collection('users').doc(userid).update({
-                name: username,
                 bio: biography
             });
             alert("Changes saved!")
