@@ -170,8 +170,7 @@
                         photoURL = downloadURL;
                         writePhotoData(filename);
                         document.getElementById("uploadtitle").innerHTML = ("Upload form");
-                        alert("The photo was successfully uploaded!")
-                        location.reload();
+                        alert("The photo was successfully uploaded!");
                     });
                 });
             } else {
@@ -192,6 +191,7 @@
                 category: photocategory,
                 URL: photoURL
             });
+            location.reload();
         };
 
 
