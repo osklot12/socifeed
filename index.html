@@ -7,15 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Socifeed</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <script src="https://use.fontawesome.com/70ccd8c446.js"></script>
     <script src="https://kit.fontawesome.com/04dbcf7e87.js" crossorigin="anonymous"></script>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 
     <script>
         // Your web app's Firebase configuration
@@ -32,6 +36,7 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
     </script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
@@ -64,8 +69,62 @@
             <a href="#">Discover</a>
         </div>
     </header>
+    <main>
 
+    </main>
     <script>
+
+        db = firebase.firestore();
+
+        let photos = db.collection("photos");
+
+        let main = document.querySelector("main");
+
+        // Viser alle varene
+        async function showPhotos() {
+            console.log("showing all photos");
+
+            // Henter alle documents i varer collectionen
+            // Bruker await for å vente på at de blir lastet ned til nettleseren
+            let photosDocuments = await photos.get();
+
+            // Kaller en hjelp-funksjon for å viser varene på nettsiden
+            documentsToHTML(photosDocuments)
+        }
+
+        // Funksjon som lager HTML kode for en liste med documenter
+        function documentsToHTML(photosDocuments) {
+            // Sletter HTML som var i main
+            main.innerHTML = "";
+
+            // Går igjennom alle documentene med en for-løkke
+            for (let doc of photosDocuments.docs) {
+                console.log(doc.id, "=>", doc.data());
+
+                // Henter ut dataene fra et document
+                let data = doc.data();
+
+                let posttime = data.timestamp.toDate();
+
+                // Skriver dataene til HTML
+                main.innerHTML += `
+        <article class="postarticle">
+            <div class="uploaduser">
+                <p>
+                    ${data.uploader}
+                </p>
+                <p class="timestamp">
+                    posted this ${posttime}
+                </p>
+            </div>
+            <h4 class="pcategory">#${data.category}</h4>
+            <img src="${data.URL}">
+        </article>`;
+            }
+        };
+
+        showPhotos();
+
 
 
 
