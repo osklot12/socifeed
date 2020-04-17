@@ -150,7 +150,7 @@
         };
 
         function writeUserData(user) {
-            firebase.firestore().collection('users').doc(user.uid).set({
+            firebase.firestore().collection('users').doc(user.uid).put({
                 name: user.displayName,
                 email: user.email,
                 photo: user.photoURL,
