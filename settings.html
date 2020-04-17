@@ -67,7 +67,7 @@
         hentdata();
 
         async function hentdata() {
-            let key = Coockies.get("uid");
+            let key = Cookies.get("uid");
             let document = await collection.doc(key).get();
             let data = document.data();
             let navn = data.navn;
