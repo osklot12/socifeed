@@ -112,32 +112,32 @@
 
         function none() {
             document.getElementById("dropdown").innerHTML = ("None");
-            var photocategory = "none"
+            photocategory = "none"
             console.log(photocategory);
         };
         function lifeStyle() {
             document.getElementById("dropdown").innerHTML = ("Lifestyle");
-            var photocategory = "lifestyle"
+            photocategory = "lifestyle"
             console.log(photocategory);
         };
         function nature() {
             document.getElementById("dropdown").innerHTML = ("Nature");
-            var photocategory = "nature"
+            photocategory = "nature"
             console.log(photocategory);
         };
         function food() {
             document.getElementById("dropdown").innerHTML = ("Food");
-            var photocategory = "food"
+            photocategory = "food"
             console.log(photocategory);
         };
         function sports() {
             document.getElementById("dropdown").innerHTML = ("Sports");
-            var photocategory = "sports"
+            photocategory = "sports"
             console.log(photocategory);
         };
         function gaming() {
             document.getElementById("dropdown").innerHTML = ("Gaming");
-            var photocategory = "gaming"
+            photocategory = "gaming"
             console.log(photocategory);
         };
 
@@ -190,7 +190,8 @@
                 uploader: cookiesName,
                 email: cookiesEmail,
                 timestamp: firebase.firestore.Timestamp.fromDate(new Date()),
-                likes: 0
+                likes: 0,
+                category: photocategory
             });
         };
 
