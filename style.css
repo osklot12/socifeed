@@ -438,6 +438,12 @@ body{
     height: 30px;
 }
 
+#nameinput{
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    height: 30px;
+}
+
 #savebutton{
     font-family: 'Nunito', sans-serif;
     color: #fff;
