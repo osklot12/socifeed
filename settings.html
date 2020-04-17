@@ -60,24 +60,24 @@
 
     <script>
 
-        // Henter data fra firestore
         let db = firebase.firestore();
         let collection = db.collection("users");
 
-        hentdata();
+        userid = Cookies.get("uid")
 
-        async function hentdata() {
-            let key = Cookies.get("uid");
-            let document = await collection.doc(key).get();
+        async function getData() {
+            let document = await collection.doc(userid).get();
             let data = document.data();
-            let navn = data.navn;
-            console.log("Found user by name " + navn);
-
-            // Setter inn navn og bio i text input
-            document.getElementById("nameinput").innerHTML = navn;
+            name = data.name;
+            console.log(name);
         }
 
-        
+        document.getElementById("nameinput").innerHTML = (name);
+
+        getData();
+
+
+
 
     </script>
 
