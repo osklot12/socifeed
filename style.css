@@ -204,7 +204,7 @@ body{
 }
 
 #userbox{
-    margin-top: 200px;
+    margin-top: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -212,7 +212,7 @@ body{
 }
 
 #userboxtext{
-    height: 300px;
+    height: 400px;
     padding: 40px;
     text-align: center;
     color: #fff;
@@ -226,7 +226,7 @@ body{
 }
 
 #userboxpicture{
-    height: 300px;
+    height: 400px;
     padding: 40px;
     text-align: center;
     color: #2f3640;
@@ -239,14 +239,15 @@ body{
 }
 
 #user_email{
-    padding-top:30px;
+    padding-top:15px;
 }
 
 #profilepicture{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 100%;
+    width: 30px;
+
 }
 
 #googlelogo{
@@ -357,4 +358,12 @@ body{
     text-decoration: underline;
     color: #3e444d;
     cursor: pointer;
+}
+
+#bio{
+    border-top: #fff solid 2px;
+    border-right: #fff solid 2px;
+    border-left: #fff solid 2px;
+    border-bottom: #fff solid 2px;
+    padding: 5px;
 }
