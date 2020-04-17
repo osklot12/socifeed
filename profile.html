@@ -64,7 +64,6 @@
         </div>
     </header>
     <main>
-        <p id="welcomeText"></p>
         <div id="googleinfo">
             <p id="googletext">
                 We use Google for our logins to this website. Google provides a safe and fast method of logins. The only
@@ -97,7 +96,7 @@
                         Biography
                     </h3>
                     <p id="bio">
-                        
+
                     </p>
                 </div>
                 <img src="" alt="" id="profilepicture">
@@ -105,7 +104,7 @@
             <div id="userboxpicture">
                 <div class="settinglink" align="center"><a class="example_e" href="#" target="_blank"
                         rel="nofollow noopener">View your uploads</a></div>
-                <div class="settinglink" align="center"><a class="example_e" href="#" target="_blank"
+                <div class="settinglink" align="center"><a class="example_e" href="settings.html" target="_blank"
                         rel="nofollow noopener">Settings</a></div>
                 <div class="settinglink" align="center"><a class="example_e" href="#" target="_blank"
                         rel="nofollow noopener">Delete your account</a></div>
@@ -133,7 +132,6 @@
                 writeUserData(user);
                 changeUserData(user);
                 makeCookies(user);
-                showWelcomeContainer(user);
                 checkCookies(user);
                 document.getElementById("googleinfo").style.display = "none";
 
@@ -160,10 +158,6 @@
         };
 
         // Endrer litt på siden for å vise at man er logget inn
-        function showWelcomeContainer(user) {
-            document.getElementById("welcomeText").innerHTML = ("Welcome, " + (user.displayName));
-        };
-
         function changeUserData(user) {
             document.getElementById("profilepicture").src = user.photoURL;
             document.getElementById("user_name").innerHTML = ("Name: " + "<b>" + (user.displayName) + "</b>");
@@ -213,6 +207,19 @@
         };
 
         checkCookies();
+
+        // Henter data fra firestore
+        let db = firebase.firestore();
+        let collection = db.collection("users");
+
+        async function hentdata() {
+            let key = Coockies.get("uid");
+            let document = await collection.doc(key).get();
+            let data = document.data();
+            let bio = data.bio;
+            console.log(bio);
+        }
+
 
     </script>
 
