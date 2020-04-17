@@ -80,7 +80,7 @@
             var username = document.getElementById("nameinput").value;
             var biography = document.getElementById("bioinput").value;
             firebase.firestore().collection('users').doc(userid).update({
-                name: name,
+                name: username,
                 bio: biography
             });
             alert("Changes saved!")
