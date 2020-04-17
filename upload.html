@@ -167,7 +167,11 @@
                     uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
                         // Her får du bildelinken
                         console.log(downloadURL);
+                        photoURL = downloadURL;
                         writePhotoData(filename);
+                        document.getElementById("uploadtitle").innerHTML = ("Upload form");
+                        alert("The photo was successfully uploaded!")
+                        document.getElementById("fileInput").files[0] = "";
                     });
                 });
             } else {
@@ -185,7 +189,8 @@
                 email: cookiesMail,
                 timestamp: firebase.firestore.Timestamp.fromDate(new Date()),
                 likes: 0,
-                category: photocategory
+                category: photocategory,
+                URL: photoURL
             });
         };
 
