@@ -68,13 +68,13 @@
         async function getData() {
             let document = await collection.doc(userid).get();
             let data = document.data();
-            name = data.name;
-            biophrase = data.bio;
+            bio = data.bio;
+            name = data.name;            
             console.log(name);
         };
 
         document.getElementById("nameinput").value = (name);
-        document.getElementById("bioinput").value = (biophrase);
+        document.getElementById("bioinput").value = (bio);
 
         function saveChanges() {
             var username = document.getElementById("nameinput").value;
