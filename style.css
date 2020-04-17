@@ -121,7 +121,7 @@ body{
 }
 
 .uploadbox{
-    margin-top: 200px;
+    margin-top: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -199,7 +199,7 @@ body{
 }
 
 #userbox{
-    margin-top: 150px;
+    margin-top: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
