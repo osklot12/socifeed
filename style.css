@@ -226,7 +226,7 @@ body{
 }
 
 #userboxpicture{
-    height: 400px;
+    height: 250px;
     padding: 40px;
     text-align: center;
     color: #2f3640;
@@ -236,6 +236,7 @@ body{
     border-left: #2f3640 solid 2px;
     border-bottom: #2f3640 solid 2px;
     overflow: hidden;
+    box-shadow: 0 0 3px #3e444d;
 }
 
 #user_email{
@@ -246,7 +247,7 @@ body{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 30px;
+    width: 60px;
 
 }
 
@@ -360,7 +361,7 @@ body{
     cursor: pointer;
 }
 
-#bio{
+#biography{
     border-top: #fff solid 2px;
     border-right: #fff solid 2px;
     border-left: #fff solid 2px;
