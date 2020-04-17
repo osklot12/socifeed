@@ -186,9 +186,11 @@
 
 
         function writePhotoData(filename) {
+            var cookiesName = Cookies.get("cookiesName");
+            var cookiesMail = Cookies.get("cookiesMail")
             firebase.firestore().collection('photos').doc(filename).set({
                 uploader: cookiesName,
-                email: cookiesEmail,
+                email: cookiesMail,
                 timestamp: firebase.firestore.Timestamp.fromDate(new Date()),
                 likes: 0,
                 category: photocategory
