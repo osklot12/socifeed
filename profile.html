@@ -104,7 +104,7 @@
             <div id="userboxpicture">
                 <div class="settinglink" align="center"><a class="example_e" href="#" target="_blank"
                         rel="nofollow noopener">View your uploads</a></div>
-                <div class="settinglink" align="center"><a class="example_e" href="settings.html" target="_self"
+                <div class="settinglink" align="center"><a class="example_e" href="#" target="_self"
                         rel="nofollow noopener">Settings</a></div>
                 <div class="settinglink" align="center"><a class="example_e" href="#" target="_blank"
                         rel="nofollow noopener">Delete your account</a></div>
@@ -150,12 +150,11 @@
         };
 
         function writeUserData(user) {
-            firebase.firestore().collection('users').doc(user.uid).put({
-                name: user.displayName,
-                email: user.email,
-                photo: user.photoURL,
-                bio: empty
-            });
+                firebase.firestore().collection('users').doc(user.uid).set({
+                    name: user.displayName,
+                    email: user.email,
+                    photo: user.photoURL,
+                });
         };
 
         // Endrer litt på siden for å vise at man er logget inn
@@ -206,7 +205,7 @@
         checkCookies();
 
         // Henter data fra firestore
-//        let db = firebase.firestore();
+        //        let db = firebase.firestore();
         let collection = db.collection("users");
 
  //       async function hentdata() {
