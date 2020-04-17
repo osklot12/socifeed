@@ -209,16 +209,16 @@
         checkCookies();
 
         // Henter data fra firestore
-        let db = firebase.firestore();
+//        let db = firebase.firestore();
         let collection = db.collection("users");
 
-        async function hentdata() {
-            let key = Coockies.get("uid");
-            let document = await collection.doc(key).get();
-            let data = document.data();
-            let bio = data.bio;
-            console.log(bio);
-        }
+ //       async function hentdata() {
+ //           let key = Coockies.get("uid");
+ //           let document = await collection.doc(key).get();
+ //           let data = document.data();
+ //           let bio = data.bio;
+ //           console.log(bio);
+  //      }
 
 
     </script>
