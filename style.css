@@ -12,6 +12,7 @@ body{
     position: relative;
     overflow: hidden;
     border-bottom: 2px solid #2f3640;
+    margin-bottom: 30px;
 }
 
 .logo{
