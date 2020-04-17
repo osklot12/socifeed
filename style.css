@@ -212,7 +212,7 @@ body{
     text-align: center;
     color: #fff;
     background-color: #2f3640;
-    flex-basis: 400px;
+    flex-basis: 450px;
     flex-shrink: 1;
     border-top: #2f3640 solid 2px;
     border-right: #2f3640 solid 2px;
@@ -224,8 +224,10 @@ body{
     height: 300px;
     padding: 40px;
     text-align: center;
+    justify-content: center;
+    align-items: center;
     color: #2f3640;
-    flex-basis: 400px;
+    flex-basis: 450px;
     border-top: #2f3640 solid 2px;
     border-right: #2f3640 solid 2px;
     border-left: #2f3640 solid 2px;
