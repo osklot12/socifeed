@@ -198,11 +198,6 @@ body{
     cursor: pointer;
 }
 
-#welcomeText{
-    font-size: 25px;
-    font-weight: bold;
-}
-
 #userbox{
     margin-top: 150px;
     display: flex;
@@ -392,4 +387,74 @@ body{
     -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
     -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
     transition: all 0.3s ease 0s;
+}
+
+.backbutton{
+    font-size: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    color: #2f3640;
+    text-decoration: none;
+    margin: 0;
+    position: absolute;
+    padding-left: 30px;
+}
+
+.backbutton:hover{
+    text-decoration: underline;
+    color: #3e444d;
+    cursor: pointer;
+}
+
+.settingheader{
+    height: 70px;
+}
+
+#settingsbox{
+    height: 300px;
+    width: 60%;
+    padding: 40px;
+    text-align: center;
+    margin: 0 auto;
+    color: #2f3640;
+    flex-basis: 400px;
+    border-top: #2f3640 solid 2px;
+    border-right: #2f3640 solid 2px;
+    border-left: #2f3640 solid 2px;
+    border-bottom: #2f3640 solid 2px;
+    overflow: hidden;
+    box-shadow: 0 0 3px #3e444d;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    position: relative;
+}
+
+#bioinput{
+    font-family: 'Nunito', sans-serif;
+    font-size: 20px;
+    height: 30px;
+}
+
+#savebutton{
+    font-family: 'Nunito', sans-serif;
+    color: #fff;
+    background-color: rgb(48, 132, 228);
+    padding: 13px;
+    border-radius: 7px;
+    box-shadow: 0 0 3px #3e444d;
+    transition: 0.2s;
+}
+
+#savebutton:hover{
+    padding: 16px;
+    cursor: pointer;
+}
+
+#savechanges{
+    position: absolute;
+    bottom: 60px;
+    right: 40px;
 }
