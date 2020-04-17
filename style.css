@@ -149,6 +149,7 @@ body{
     border-right: #2f3640 solid 2px;
     border-left: #2f3640 solid 2px;
     border-bottom: #2f3640 solid 2px;
+    box-shadow: 0 0 3px #3e444d;
 }
 
 #welcomeText{
@@ -275,4 +276,85 @@ body{
 
 #googletext{
     padding: 40px;
+}
+
+.upload-group i > input{
+    display: none;
+}
+
+.upload-group{
+    font-size: 30px;
+    cursor: pointer;
+    bottom: 0;
+    flex-basis: 160px;
+}
+
+.choosefile{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.dropbtn {
+    background-color: #2f3640;
+    color: #fff;
+    padding: 16px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    margin-right: 20px;
+    width: 100%;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    flex-basis: 70px;
+    flex-shrink: 1;
+    flex-basis: 160px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+  color: #2f3640;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e444d;
+}
+
+#submitfile{
+    flex-basis: 160px;
+    flex-shrink: 1;
+    font-size: 20px;
+    background-color: #fff;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    color: #2f3640;
+    left: 80%;
+    bottom: 10%;
+}
+
+#submitfile:hover{
+    text-decoration: underline;
+    color: #3e444d;
+    cursor: pointer;
 }
