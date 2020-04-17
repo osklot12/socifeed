@@ -151,9 +151,9 @@
             // Sjekker om brukeren er innlogget ved å sjekke om cookien "logged" finnes
             if (Cookies.get("logged")) {
                 var image = document.getElementById("fileInput").files[0];
-                var filename = image.name;
+                filename = image.name;
                 console.log(filename);
-                var storageRef = firebase.storage().ref("/uploads" + filename);
+                var storageRef = firebase.storage().ref("/uploads/" + filename);
                 var uploadTask = storageRef.put(image);
 
                 uploadTask.on('state_changed', function (snapshot) {
