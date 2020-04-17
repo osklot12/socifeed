@@ -239,10 +239,6 @@ body{
     box-shadow: 0 0 3px #3e444d;
 }
 
-#user_email{
-    padding-top:15px;
-}
-
 #profilepicture{
     display: block;
     margin-left: auto;
@@ -367,4 +363,26 @@ body{
     border-left: #fff solid 2px;
     border-bottom: #fff solid 2px;
     padding: 5px;
+}
+
+.example_e {
+    border: none;
+    background: #2f3640;
+    color: #ffffff !important;
+    font-weight: 100;
+    padding: 20px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    display: inline-block;
+    transition: all 0.3s ease 0s;
+}
+
+.example_e:hover {
+    color: #3e444d !important;
+    font-weight: 700 !important;
+    letter-spacing: 3px;
+    background: none;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.3s ease 0s;
 }
