@@ -387,6 +387,7 @@ body{
     font-weight: 700 !important;
     letter-spacing: 3px;
     background: none;
+    box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
     -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
     -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
     transition: all 0.3s ease 0s;
@@ -526,4 +527,16 @@ main > article > img{
     font-size: 10px;
     margin-bottom: 4px;
     margin-top: 4px;
+}
+
+.hashtagtitle{
+    color: #727477;
+    font-size: 40px;
+    font-style: italic;
+}
+
+@media (max-width: 600px) {
+    main > article > img{
+        width: 350px;
+        max-height: 700px;
 }
