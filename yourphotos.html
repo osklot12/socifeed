@@ -97,7 +97,7 @@
                 </div>
                 <h4 class="pcategory" onclick="${data.category}();">#${data.category}</h4>
                 <img src="${data.URL}">
-                <p id="deletephoto" onclick="deletePhoto();">
+                <p id="deletephoto" onclick="deletePhoto(${photoid});">
                     Delete photo
                 </p>
             </article>`;
@@ -119,8 +119,8 @@
 
         showYourPhotos();
 
-        function deletePhoto() {
-            db.collection("photos").doc().where("URL", "==", data.URL).delete().then(function () {
+        function deletePhoto(photoid) {
+            db.collection("photos").doc(photoid).delete().then(function () {
                 console.log("Document successfully deleted!");
             });
         };
