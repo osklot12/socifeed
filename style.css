@@ -528,6 +528,7 @@ body{
 .pcategory{
     color: #2f3640;
     margin: 10px;
+    font-style: italic;
 }
 
 .pcategory:hover{
@@ -683,17 +684,7 @@ body{
     margin: 0;
 }
 
-.deletecaptiontext{
-    padding: 10px;
-    margin: 0;
-    border-top: #2f3640 solid 2px;
-    border-bottom: #2f3640 solid 2px;
-    background-color: #ebecec;
-}
-
 .captiontext{
     padding: 10px;
     margin: 0;
-    border-top: #2f3640 solid 2px;
-    background-color: #ebecec;
 }
