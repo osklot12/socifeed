@@ -93,7 +93,7 @@
                         <img src="${postUserPhoto}">
                     <p>
                         ${data.uploader}
-                    </p>
+                    s</p>
                 </div>
                     <p class="timestamp">
                         posted this ${posttime}
@@ -115,11 +115,11 @@
 
             console.log("showing your photos");
 
-            let useremail = Cookies.get("cookiesMail");
+            let userID = Cookies.get("uid");
 
-            console.log(useremail);
+            console.log(uid);
 
-            let photosDocuments = await photos.where("email", "==", useremail).get();
+            let photosDocuments = await photos.where("uid", "==", userID).get();
 
             documentsToHTML(photosDocuments);
         }
