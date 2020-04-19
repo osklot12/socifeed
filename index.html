@@ -120,6 +120,8 @@
 
                 let postUserPhoto = userDocument.data().photo;
 
+                let caption = data.caption;
+
                 console.log(postUser);
 
 
@@ -142,6 +144,9 @@
             <div class="photocontainer">
                 <img src="${data.URL}">
             </div>
+            <p class="captiontext">
+                ${caption}
+            </p>
         </article>`;
             }
         };
