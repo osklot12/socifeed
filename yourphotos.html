@@ -119,7 +119,7 @@
 
         showYourPhotos();
 
-        function deletePhoto(photoid) {
+        function deletePhoto(doc) {
             db.collection("photos").doc(photoid).delete().then(function () {
                 console.log("Document successfully deleted!");
             });
