@@ -90,7 +90,7 @@
                     Email:
                 </p>
                 <p id="user_picturecount">
-                    Uploaded pictures:
+                    Uploaded photos:
                 </p>
                 <div id="biography">
                     <h3 id="biotitle">
@@ -216,6 +216,7 @@
             let snap = await db.collection("photos").where("uid", "==", useridbro).get();
             size = snap.size;
             console.log(size);
+            document.getElementById("user_picturecount").innerHTML = ("Uploaded photos: " + "<b>" + size +"</b>");
         };
 
 
