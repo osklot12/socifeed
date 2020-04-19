@@ -7,9 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Socifeed</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap" rel="stylesheet">
-    <script src="https://use.fontawesome.com/70ccd8c446.js"></script>
-    <script src="https://kit.fontawesome.com/04dbcf7e87.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/04dbcf7e87.js" crossorigin="anonymous"></script>
     <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
@@ -40,48 +39,18 @@
 </head>
 
 <body>
-    <header>
-        <!--Lager en top header som skal inneholde logo, søkefelt, knapp for opplastning av bilder og profilen din-->
-        <div class="top_header">
-            <a href="index.html">
-                <img src="resources/logo.png" alt="" class="logo">
-            </a>
-            <div class="searchbar">
-                <input type="text" class="searchtxt" name="" placeholder="Find users">
-                <a class="searchbtn" href="">
-                    <i class="fas fa-search"></i>
-                </a>
-            </div>
-            <div class="upload_button">
-                <a href="upload.html">
-                    <label for="fileInput">
-                        <i class="fas fa-upload"></i>
-                    </label>
-                </a>
-            </div>
-            <a class="profilebtn" href="profile.html">
-                <i class="fas fa-user"></i>
-            </a>
-        </div>
-        <div class="sub_header">
-            <a href="#">Feed</a>
-            <a href="#">Trending</a>
-            <a href="#">Discover</a>
-        </div>
+    <header class="settingheader">
+        <a href="../index.html" class="backbutton">Back</a>
     </header>
-    <main class="indexmain">
+    <main class="tagmain">
 
     </main>
-    <section>
 
-    </section>
     <script>
 
         db = firebase.firestore();
 
         let photos = db.collection("photos");
-
-        let tag = document.querySelector("section");
 
         let main = document.querySelector("main");
 
@@ -97,9 +66,8 @@
             documentsToHTML(photosDocuments)
         }
 
-
         // Funksjon som lager HTML kode for en liste med documenter
-        async function documentsToHTML(photosDocuments) {
+        function documentsToHTML(photosDocuments) {
             // Sletter HTML som var i main
             main.innerHTML = "";
 
@@ -110,55 +78,48 @@
                 // Henter ut dataene fra et document
                 let data = doc.data();
 
-                let postTime = data.timestamp.toDate();
+                let posttime = data.timestamp.toDate();
 
 
 
                 // Skriver dataene til HTML
                 main.innerHTML += `
-        <article class="postarticle">
-            <div class="uploaduser">
-                <p>
-                    ${data.uploader}
-                </p>
-                <p class="timestamp">
-                    posted this ${postTime}
-                </p>
-            </div>
-            <h4 class="pcategory" onclick="${data.category}();">#${data.category}</h4>
-            <img src="${data.URL}">
-        </article>`;
+            <article class="tagpostarticle">
+                <div class="uploaduser">
+                    <p>
+                        ${data.uploader}
+                    </p>
+                    <p class="timestamp">
+                        posted this ${posttime}
+                    </p>
+                </div>
+                <h4 class="pcategory" onclick="${data.category}();">#${data.category}</h4>
+                <img src="${data.URL}">
+            </article>`;
             }
         };
 
-        showPhotos();
+        async function showYourPhotos() {
 
-        function lifestyle() {
-            window.location.href = "hashtags/lifestyle.html";
-        };
+            console.log("showing lifestyle photos");
 
-        function food() {
-            window.location.href = "hashtags/food.html";
-        };
+            let useremail = Cookies.get("cookiesMail");
 
-        function sports() {
-            window.location.href = "hashtags/sports.html";
-        };
+            console.log(useremail);
 
-        function nature() {
-            window.location.href = "hashtags/nature.html";
-        };
+            let photosDocuments = await photos.where("email", "==", useremail).get();
 
-        function gaming() {
-            window.location.href = "hashtags/gaming.html";
-        };
+            documentsToHTML(photosDocuments);
+        }
 
-        function none() {
-            window.location.href = "hashtags/none.html";
-        };
+        showYourPhotos();
 
 
     </script>
+
+</body>
+
+</html>
 
 </body>
 

@@ -104,7 +104,7 @@
             </div>
             <div id="userboxpicture">
                 <div class="settinglink" align="center"><a class="example_e" href="#" target="_blank"
-                        rel="nofollow noopener">View your uploads</a></div>
+                        rel="nofollow noopener" onclick="yourPhotos();">View your uploads</a></div>
                 <div class="settinglink" align="center"><a class="example_e" href="#" target="_self"
                         rel="nofollow noopener">Settings</a></div>
                 <div class="settinglink" align="center"><a class="example_e" href="#" target="_blank"
@@ -204,6 +204,10 @@
         };
 
         checkCookies();
+
+        function yourPhotos() {
+            window.location.href = "yourphotos.html";
+        };
 
         // Henter data fra firestore
         //        let db = firebase.firestore();
