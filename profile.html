@@ -189,7 +189,7 @@
                 document.getElementById("logoutbtn").style.display = "inline-block";
                 document.getElementById("userbox").style.display = "flex";
                 document.getElementById("googleinfo").style.display = "none";
-                photosCount();
+                countPhotos();
             };
         };
 
@@ -211,7 +211,7 @@
             window.location.href = "yourphotos.html";
         };
 
-        async function countPhotots() {
+        async function countPhotos() {
             let useridbro = Cookies.get("uid");
             db.collection("photos").where("uid", "==", useridbro).then(snap => {
                 size = snap.size;
