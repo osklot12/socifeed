@@ -617,6 +617,10 @@ body{
     grid-template-rows: repeat(1, 1fr);
     }
 
+    #userboxpicture{
+        padding: 5px;
+    }
+
 }
 
 #deletephoto{
