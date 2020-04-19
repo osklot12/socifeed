@@ -80,6 +80,8 @@
 
                 let photoURL = data.URL;
 
+                let photoURL2 = photoURL;
+
                 let posttime = data.timestamp.toDate();
 
 
@@ -100,7 +102,7 @@
                 <div class="photocontainer">
                     <img src="${data.URL}">
                 </div>
-                <p id="deletephoto" onclick="deletePhoto(photoURL);">
+                <p id="deletephoto" onclick="deletePhoto(${photoURL2});">
                     Delete
                 </p>
             </article>
