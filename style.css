@@ -599,6 +599,8 @@ body{
 
 #deletephoto{
     color: #727477;
+    text-align: right;
+    margin-right: 20px;
 }
 
 #deletephoto:hover{
