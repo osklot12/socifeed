@@ -70,7 +70,7 @@
         }
 
         // Funksjon som lager HTML kode for en liste med documenter
-        function documentsToHTML(photosDocuments) {
+        async function documentsToHTML(photosDocuments) {
             // Sletter HTML som var i main
             main.innerHTML = "";
 
@@ -83,26 +83,45 @@
 
                 let posttime = data.timestamp.toDate();
 
+                let userID = Cookies.get("uid");
+                
+                let userDocument = await db.collection("users").doc(userID).get();
+
+                let postUser = userDocument.id;
+
+                let postUserPhoto = userDocument.data().photo;
+
+                let caption = data.caption;
+
 
 
                 // Skriver dataene til HTML
                 main.innerHTML += `
-                <div class="articlecontainer">
-            <article class="tagpostarticle">
-                <div class="uploaduser">
-                    <p>
-                        ${data.uploader}
-                    </p>
-                    <p class="timestamp">
-                        posted this ${posttime}
-                    </p>
-                </div>
-                <h4 class="pcategory" onclick="${data.category}();">#${data.category}</h4>
-                <div class="photocontainer">
-                    <img src="${data.URL}">
-                </div>
-            </article>
-            </div>`;
+<div class="articlecontainer">
+<article class="tagpostarticle">
+<div class="uploaduser">
+    <div class="uploaduserinfo">
+        <img src="${postUserPhoto}">
+    <p>
+        ${data.uploader}
+    </p>
+</div>
+    <p class="timestamp">
+        posted this ${posttime}
+    </p>
+</div>
+<h4 class="pcategory" onclick="${data.category}();">#${data.category}</h4>
+<div class="photocontainer">
+    <img src="${data.URL}">
+</div>
+<p class="captiontext">
+${caption}
+</p>
+<p id="deletephoto" onclick="deletePhoto('${photoID}');">
+    Delete
+</p>
+</article>
+</div>`;
             }
         };
 
