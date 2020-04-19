@@ -100,7 +100,7 @@
                 <div class="photocontainer">
                     <img src="${data.URL}">
                 </div>
-                <p id="deletephoto" onclick="deletePhoto(${data()});">
+                <p id="deletephoto" onclick='deletePhoto("' + ${photoURL} + '");'>
                     Delete
                 </p>
             </article>
