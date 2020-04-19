@@ -130,6 +130,8 @@
             db.collection("photos").doc(photoID).delete().then(function () {
                 console.log("Document successfully deleted!");
                 console.log(photoID);
+                alert("Your photo was successfully deleted!")
+                location.reload();
             });
         };
         
