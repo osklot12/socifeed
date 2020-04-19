@@ -97,7 +97,7 @@
                 <div class="photocontainer">
                     <img src="${data.URL}">
                 </div>
-                <p id="deletephoto" onclick="deletePhoto(${doc});">
+                <p id="deletephoto" onclick="deletePhoto(${data});">
                     Delete photo
                 </p>
             </article>`;
@@ -119,13 +119,13 @@
 
         showYourPhotos();
 
-        function deletePhoto(doc) {
+        function deletePhoto(data) {
 
-            let photoid = doc.id;
+            let photoURL = data.URL;
 
             console.log("you made it so far");
 
-            db.collection("photos").doc(photoid).delete().then(function () {
+            db.collection("photos").doc().where("URL", "==", photoURL).delete().then(function () {
                 console.log("Document successfully deleted!");
             });
         };
