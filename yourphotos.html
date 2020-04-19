@@ -127,7 +127,7 @@
 
             console.log("you made it so far");
 
-            db.collection("photos").doc('photoID').delete().then(function () {
+            db.collection("photos").doc(photoID).delete().then(function () {
                 console.log("Document successfully deleted!");
             });
         };
