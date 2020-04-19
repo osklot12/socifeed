@@ -78,7 +78,7 @@
                 // Henter ut dataene fra et document
                 let data = doc.data();
 
-                let photoURL = data.URL;
+                let photoID = doc.id;
 
                 let posttime = data.timestamp.toDate();
 
@@ -100,7 +100,7 @@
                 <div class="photocontainer">
                     <img src="${data.URL}">
                 </div>
-                <p id="deletephoto" onclick='deletePhoto("' + ${photoURL} + '");'>
+                <p id="deletephoto" onclick='deletePhoto("' + ${photoID} + '");'>
                     Delete
                 </p>
             </article>
@@ -123,11 +123,11 @@
 
         showYourPhotos();
 
-        function deletePhoto(photoURL) {
+        function deletePhoto(photoID) {
 
             console.log("you made it so far");
 
-            db.collection("photos").doc().where("URL", "==", photoURL).delete().then(function () {
+            db.collection("photos").doc().where("URL", "==", photoID).delete().then(function () {
                 console.log("Document successfully deleted!");
             });
         };
