@@ -82,6 +82,12 @@
 
                 let posttime = data.timestamp.toDate();
 
+                let userDocument = await db.collection("users").doc(userID).get();
+
+                let postUser = userDocument.id;
+
+                let postUserPhoto = userDocument.data().photo;
+
 
 
                 // Skriver dataene til HTML
