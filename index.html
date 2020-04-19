@@ -116,7 +116,9 @@
 
                 let userDocument = await db.collection("users").doc(userID).get();
 
-                console.log(userDocument);
+                let postUser = userDocument.id;
+
+                console.log(postUser);
 
 
 
