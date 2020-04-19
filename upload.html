@@ -186,13 +186,14 @@
         function writePhotoData(filename) {
             var cookiesName = Cookies.get("cookiesName");
             var cookiesMail = Cookies.get("cookiesMail");
+            var cookiesUID = Cookies.get("uid");
             firebase.firestore().collection('photos').doc(filename).set({
                 uploader: cookiesName,
-                email: cookiesMail,
                 timestamp: firebase.firestore.Timestamp.fromDate(new Date()),
                 likes: 0,
                 category: photocategory,
-                URL: photoURL
+                URL: photoURL,
+                uid:cookiesUID
             });
             alert("The photo was successfully uploaded!");
         };
