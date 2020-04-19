@@ -118,6 +118,8 @@
 
                 let postUser = userDocument.id;
 
+                let postUserPhoto = userDocument.data().photo;
+
                 console.log(postUser);
 
 
@@ -126,9 +128,12 @@
                 main.innerHTML += `
         <article class="postarticle">
             <div class="uploaduser">
+                <div class="uploaduserinfo">
+                <img src="${postUserPhoto}">
                 <p>
                     ${data.uploader}
                 </p>
+                </div>
                 <p class="timestamp">
                     posted this ${postTime}
                 </p>

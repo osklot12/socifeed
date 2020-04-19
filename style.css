@@ -527,7 +527,7 @@ body{
 
 .pcategory{
     color: #2f3640;
-    padding-left: 20px;
+    padding-left: 10px;
 }
 
 .pcategory:hover{
@@ -555,24 +555,12 @@ body{
     box-shadow: 0 0 3px #3e444d;
 }
 
-.uploaduser{
-    border-bottom: #2f3640 solid 2px;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-size: 20px;
-    background-color: #ebecec;
-}
-
-.uploaduser > p{
-    margin: 0px;
-    padding: 4px;
-}
-
 .timestamp{
     color: #727477;
     font-size: 10px;
     margin-bottom: 4px;
     margin-top: 4px;
+    padding-left: 10px;
 }
 
 .hashtagtitle{
@@ -639,4 +627,39 @@ body{
 #deletephoto:hover{
     text-decoration: underline;
     cursor: pointer;
+}
+
+.uploaduserinfo{
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    border-bottom: #2f3640 solid 2px;
+}
+
+.uploaduserinfo:hover{
+    background-color: #f3f3f3;
+    cursor: pointer;
+}
+
+.uploaduser > .uploaduserinfo > img {
+    width: 40px;
+    height: 40px;
+    margin-top: 40px;
+    border-radius: 50%;
+    margin-top: 0;
+    margin-left: 10px;
+}
+
+.uploaduser{
+    border-bottom: #2f3640 solid 2px;
+    font-size: 20px;
+    background-color: #ebecec;
+}
+
+.uploaduserinfo > p {
+    margin: 0;
+    text-align: center;
+    padding: 0;
+    line-height: 40px;
+    padding-left: 10px;
 }
