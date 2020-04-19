@@ -120,6 +120,7 @@
         var provider = new firebase.auth.GoogleAuthProvider();
         var db = firebase.firestore();
         var user;
+        let collection = db.collection("users");
 
         // Lager en funksjon som skriver i consolen når knappen trykkes på
         function signIn() {
@@ -188,6 +189,7 @@
                 document.getElementById("logoutbtn").style.display = "inline-block";
                 document.getElementById("userbox").style.display = "flex";
                 document.getElementById("googleinfo").style.display = "none";
+                photosCount();
             };
         };
 
@@ -209,17 +211,16 @@
             window.location.href = "yourphotos.html";
         };
 
-        // Henter data fra firestore
-        //        let db = firebase.firestore();
-        let collection = db.collection("users");
+        async function countPhotots() {
+            let useridbro = Cookies.get("uid");
+            db.collection("photos").where("uid", "==", useridbro).then(snap => {
+                size = snap.size;
+                console.log(size);
+            });
+        }
 
- //       async function hentdata() {
- //           let key = Coockies.get("uid");
- //           let document = await collection.doc(key).get();
- //           let data = document.data();
- //           let bio = data.bio;
- //           console.log(bio);
-  //      }
+
+  
 
 
     </script>
