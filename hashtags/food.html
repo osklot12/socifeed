@@ -84,7 +84,7 @@
                 let posttime = data.timestamp.toDate();
 
                 let userID = Cookies.get("uid");
-                
+
                 let userDocument = await db.collection("users").doc(userID).get();
 
                 let postUser = userDocument.id;
@@ -116,9 +116,6 @@
 </div>
 <p class="captiontext">
 ${caption}
-</p>
-<p id="deletephoto" onclick="deletePhoto('${photoID}');">
-    Delete
 </p>
 </article>
 </div>`;
