@@ -122,7 +122,8 @@
         function deletePhoto(photoid) {
             db.collection("photos").doc(photoid).delete().then(function () {
                 console.log("Document successfully deleted!");
-            }
+            });
+        };
         
 
 
