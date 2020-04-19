@@ -104,6 +104,7 @@
                     </label>
                     <button id="submitfile" onclick="uploadFile();">Submit</button>
                 </div>
+                <input type="text" id="captioninput" placeholder="Type your caption here">
                 <p>
                     Upload photos to our database using this form. If none of the categories listed applies to your
                     photo, then choose "none". Keep in mind that explicit content will be removed.
@@ -187,13 +188,15 @@
             var cookiesName = Cookies.get("cookiesName");
             var cookiesMail = Cookies.get("cookiesMail");
             var cookiesUID = Cookies.get("uid");
+            let cap = document.getElementById("captioninput").value;
             firebase.firestore().collection('photos').doc(filename).set({
                 uploader: cookiesName,
                 timestamp: firebase.firestore.Timestamp.fromDate(new Date()),
                 likes: 0,
                 category: photocategory,
                 URL: photoURL,
-                uid:cookiesUID
+                uid:cookiesUID,
+                caption: cap
             });
             alert("The photo was successfully uploaded!");
         };
