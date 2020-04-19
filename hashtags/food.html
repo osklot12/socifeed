@@ -81,9 +81,9 @@
                 // Henter ut dataene fra et document
                 let data = doc.data();
 
-                let posttime = data.timestamp.toDate();
+                let userID = data.uid;
 
-                let userID = Cookies.get("uid");
+                let posttime = data.timestamp.toDate();
 
                 let userDocument = await db.collection("users").doc(userID).get();
 
