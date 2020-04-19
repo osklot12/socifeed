@@ -201,6 +201,8 @@ body{
 
 #userbox{
     margin-top: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -478,6 +480,8 @@ body{
     justify-content: center;
     margin-top: 30px;
     margin-bottom: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .tagmain{
@@ -489,28 +493,36 @@ body{
     margin-top: 30px;
     margin-bottom: 30px;
     padding: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
-.indexmain > article > img{
-    width: 500px;
+.indexmain > article > .photocontainer > img{
+    width: 90%;
     max-height: 1000px;
     border-right: #2f3640 solid 2px;
     border-left: #2f3640 solid 2px;
     border-bottom: #2f3640 solid 2px;
+    border-top: #2f3640 solid 2px;
     overflow: hidden;
     box-shadow: 0 0 3px #3e444d;
-    margin: 20px;
+    margin: 3%;
 }
 
-.tagmain > article > img{
-    width: 250px;
+.tagmain > article > .photocontainer > img{
+    width: 90%;
     max-height: 500px;
     border-right: #2f3640 solid 2px;
     border-left: #2f3640 solid 2px;
     border-bottom: #2f3640 solid 2px;
+    border-top: #2f3640 solid 2px;
     overflow: hidden;
     box-shadow: 0 0 3px #3e444d;
-    margin: 20px;
+    margin: 3%;
+}
+
+.photocontainer{
+    text-align: center;
 }
 
 .pcategory{
@@ -531,6 +543,7 @@ body{
     border-bottom: #2f3640 solid 2px;
     overflow: hidden;
     box-shadow: 0 0 3px #3e444d;
+    max-width: 550px;
 }
 
 .tagpostarticle{
@@ -570,10 +583,6 @@ body{
 }
 
 @media (max-width: 600px) {
-    main > article > img{
-        width: 350px;
-        max-height: 700px;
-    }
         
     .uploadbox{
         margin-top: 100px;
@@ -593,6 +602,30 @@ body{
 
     #userbox{
         flex-direction: column;
+    }
+
+}
+
+@media (max-width: 1000px) {
+        
+    .tagmain{
+        grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    }
+
+}
+
+#deletephoto{
+    color: #727477;
+    text-align: right;
+    margin-right: 20px;
+}
+
+@media (max-width: 500px) {
+        
+    .tagmain{
+        grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
     }
 
 }
