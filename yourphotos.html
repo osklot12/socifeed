@@ -125,7 +125,7 @@
 
             console.log(userID);
 
-            let photosDocuments = await photos.where("uid", "==", userID).get();
+            let photosDocuments = await photos.orderBy("timestamp", "desc").where("uid", "==", userID).get();
 
             documentsToHTML(photosDocuments, userID);
         }

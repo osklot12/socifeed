@@ -91,7 +91,7 @@
 
             // Henter alle documents i varer collectionen
             // Bruker await for å vente på at de blir lastet ned til nettleseren
-            let photosDocuments = await photos.get();
+            let photosDocuments = await photos.orderBy("timestamp", "desc").get();
 
             // Kaller en hjelp-funksjon for å viser varene på nettsiden
             documentsToHTML(photosDocuments)
