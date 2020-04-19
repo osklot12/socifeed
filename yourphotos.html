@@ -78,6 +78,8 @@
                 // Henter ut dataene fra et document
                 let data = doc.data();
 
+                let photoURL = data.URL;
+
                 let posttime = data.timestamp.toDate();
 
 
@@ -97,7 +99,7 @@
                 <div class="photocontainer">
                     <img src="${data.URL}">
                 </div>
-                <p id="deletephoto" onclick="deletePhoto(data);">
+                <p id="deletephoto" onclick="deletePhoto(${photoURL});">
                     Delete photo
                 </p>
             </article>`;
@@ -119,9 +121,7 @@
 
         showYourPhotos();
 
-        function deletePhoto(data) {
-
-            let photoURL = data.URL;
+        function deletePhoto(photoURL) {
 
             console.log("you made it so far");
 
