@@ -110,7 +110,13 @@
                 // Henter ut dataene fra et document
                 let data = doc.data();
 
+                let userID = data.uid;
+
                 let postTime = data.timestamp.toDate();
+
+                let userDocument = await collection.doc(userID).get();
+
+                console.log(userDocument);
 
 
 
