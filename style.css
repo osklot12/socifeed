@@ -687,5 +687,6 @@ body{
     padding: 10px;
     margin: 0;
     border-top: #2f3640 solid 2px;
+    border-bottom: #2f3640 solid 2px;
     background-color: #ebecec;
 }
