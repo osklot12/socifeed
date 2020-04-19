@@ -114,7 +114,7 @@
 
                 let postTime = data.timestamp.toDate();
 
-                let userDocument = await collection.doc(userID).get();
+                let userDocument = await db.collection("users").doc(userID).get();
 
                 console.log(userDocument);
 
