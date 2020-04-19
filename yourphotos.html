@@ -106,7 +106,7 @@
 
         async function showYourPhotos() {
 
-            console.log("showing lifestyle photos");
+            console.log("showing your photos");
 
             let useremail = Cookies.get("cookiesMail");
 
@@ -119,7 +119,7 @@
 
         showYourPhotos();
 
-        function deletePhoto(photoid) {
+        function deletePhoto() {
             db.collection("photos").doc(photoid).delete().then(function () {
                 console.log("Document successfully deleted!");
             });
