@@ -40,7 +40,7 @@
 
 <body>
     <header class="settingheader">
-        <a href="../index.html" class="backbutton">Back</a>
+        <a href="index.html" class="backbutton">Back</a>
     </header>
     <main class="tagmain">
 
@@ -78,6 +78,8 @@
                 // Henter ut dataene fra et document
                 let data = doc.data();
 
+                let photoid = doc.id;
+
                 let posttime = data.timestamp.toDate();
 
 
@@ -95,6 +97,9 @@
                 </div>
                 <h4 class="pcategory" onclick="${data.category}();">#${data.category}</h4>
                 <img src="${data.URL}">
+                <p id="deletephoto" onclick="deletePhoto(photoid);">
+                    Delete photo
+                </p>
             </article>`;
             }
         };
@@ -113,6 +118,12 @@
         }
 
         showYourPhotos();
+
+        function deletePhoto(photoid) {
+            db.collection("photos").doc(photoid).delete().then(function () {
+                console.log("Document successfully deleted!");
+            }
+        
 
 
     </script>
