@@ -213,7 +213,7 @@
 
         async function countPhotos() {
             let useridbro = Cookies.get("uid");
-            let snap = db.collection("photos").where("uid", "==", useridbro).get();
+            let snap = await db.collection("photos").where("uid", "==", useridbro).get();
             size = snap.size;
             console.log(size);
         };
