@@ -120,7 +120,7 @@
         showYourPhotos();
 
         function deletePhoto() {
-            db.collection("photos").doc(photoid).delete().then(function () {
+            db.collection("photos").doc().where("URL", "==", data.URL).delete().then(function () {
                 console.log("Document successfully deleted!");
             });
         };
