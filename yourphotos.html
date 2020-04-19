@@ -86,6 +86,7 @@
 
                 // Skriver dataene til HTML
                 main.innerHTML += `
+                div class="articlecontainer">
             <article class="tagpostarticle">
                 <div class="uploaduser">
                     <p>
@@ -99,10 +100,11 @@
                 <div class="photocontainer">
                     <img src="${data.URL}">
                 </div>
-                <p id="deletephoto" onclick="deletePhoto(""${photoURL}"");">
-                    Delete photo
+                <p id="deletephoto" onclick="photoURL();">
+                    Delete
                 </p>
-            </article>`;
+            </article>
+            </div>`;
             }
         };
 
