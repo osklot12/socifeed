@@ -78,8 +78,6 @@
                 // Henter ut dataene fra et document
                 let data = doc.data();
 
-                let photoid = doc.id
-
                 let posttime = data.timestamp.toDate();
 
 
@@ -97,7 +95,7 @@
                 </div>
                 <h4 class="pcategory" onclick="${data.category}();">#${data.category}</h4>
                 <img src="${data.URL}">
-                <p id="deletephoto" onclick="deletePhoto"("${photoid}")"();">
+                <p id="deletephoto" onclick="deletePhoto${doc}();">
                     Delete photo
                 </p>
             </article>`;
@@ -119,7 +117,10 @@
 
         showYourPhotos();
 
-        async function deletePhoto(photoid) {
+        function deletePhoto(doc) {
+
+            let photoid = doc.id;
+
             console.log("you made it so far");
 
             db.collection("photos").doc(photoid).delete().then(function () {
