@@ -69,8 +69,11 @@
 
             //            console.log(yourPhotos);
 
-            db.collection("photos").where("uid", "==", userID).delete().then(function () {
-                console.log("Your photos were successfully deleted!");
+            var photo_query = db.collection('photos').where('uid', '==', userID);
+            photo_query.get().then(function (querySnapshot) {
+                querySnapshot.forEach(function (doc) {
+                    doc.ref.delete();
+                });
             });
 
 
