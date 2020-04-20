@@ -92,14 +92,6 @@
                 <p id="user_picturecount">
                     Uploaded photos:
                 </p>
-                <div id="biography">
-                    <h3 id="biotitle">
-                        Biography
-                    </h3>
-                    <p id="bio">
-
-                    </p>
-                </div>
                 <img src="" alt="" id="profilepicture">
             </div>
             <div id="userboxpicture">
@@ -222,35 +214,6 @@
             console.log(size);
             document.getElementById("user_picturecount").innerHTML = ("Uploaded photos: " + "<b>" + size + "</b>");
         };
-
-        async function putInBio() {
-
-            let userBios = await db.collection("bios").get();
-
-            let userid = Cookies.get("uid");
-
-            let thisUser = await db.collection("bios").doc(userid).get();
-
-            let postWrite = thisUser.data().bio;
-
-            document.getElementById("bio").innerHTML = postWrite;
-
-        };
-
-
-        async function checkBio() {
-            let userid = Cookies.get("uid");
-
-            let userBio = await db.collection('bios').doc('userid').get();
-            if (userBio.exists === true){
-                console.log("You fuckin made it!")
-            }
-        };
-
-        checkBio();
-
-
-
 
     </script>
 
