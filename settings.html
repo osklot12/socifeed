@@ -49,7 +49,7 @@
             </h3>
             <input type="text" maxlength="80" placeholder="Write your bio here" id="bioinput">
             <div id="savechanges">
-                <label for="" id="savebutton" onclick="saveChanges();">Save changes</label>
+                <label for="" id="savebutton" onclick="writeBio();">Save changes</label>
             </div>
         </div>
     </main>
@@ -59,27 +59,25 @@
         let db = firebase.firestore();
         let collection = db.collection("bios");
 
-        userid = Cookies.get("uid")
-        getData();
+        async function writeBio(user) {
 
-        async function getData() {
-            let document = await collection.doc(userid).get();
-            let data = document.data();
-            bio = data.bio;
-            console.log(bio);
-        };
+            let userid = Cookies.get("uid");
+            let biography =  await document.getElementById("bioinput").value;
 
-        document.getElementById("bioinput") = (bio);
-
-        
-
-        function saveChanges() {
-            var biography = document.getElementById("bioinput").value;
-            firebase.firestore().collection('bios').doc(userid).update({
-                bio: biography,
+            firebase.firestore().collection('bios').doc(uid).set({
+                bio: biography
             });
-            alert("Changes saved!")
         };
+
+        let userBios = await db.collection("bios").get();
+
+        let userid = Cookies.get("uid");
+
+        let thisUser = await db.collection("bios").doc(userid).get();
+
+        let postWrite = thisUser.bio;
+
+        document.getElementById("bioinput").value = postWrite;
 
 
 
