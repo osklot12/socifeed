@@ -64,6 +64,7 @@
                 <i class="fas fa-user"></i>
             </a>
         </div>
+        <!--Lager en underheader som skal kunne sortere dataene ulikt-->
         <div class="sub_header">
             <a href="#" onclick="showPhotos();">Newest</a>
             <a href="#" onclick="showOldPhotos();">Oldest</a>
@@ -77,6 +78,8 @@
     </section>
     <script>
 
+        // Setter variabler for ulike kolleksjoner
+
         db = firebase.firestore();
 
         let photos = db.collection("photos");
@@ -85,40 +88,39 @@
 
         let main = document.querySelector("main");
 
-        // Viser alle varene
+        // Viser alle bildene
         async function showPhotos() {
             console.log("showing all photos");
 
-            // Henter alle documents i varer collectionen
-            // Bruker await for å vente på at de blir lastet ned til nettleseren
+            // Henter alle dokumentene sortert etter tid
             let photosDocuments = await photos.orderBy("timestamp", "desc").get();
 
-            // Kaller en hjelp-funksjon for å viser varene på nettsiden
+            // Kaller funksjon
             documentsToHTML(photosDocuments)
         }
 
+        // Viser bildene sortert fra eldst til nyest
         async function showOldPhotos() {
             console.log("showing all photos");
 
-            // Henter alle documents i varer collectionen
-            // Bruker await for å vente på at de blir lastet ned til nettleseren
+            // Henter alle dokumentene sortert etter tid
             let photosDocuments = await photos.orderBy("timestamp", "asc").get();
 
-            // Kaller en hjelp-funksjon for å viser varene på nettsiden
+            // Kaller funksjon
             documentsToHTML(photosDocuments)
         }
 
 
-        // Funksjon som lager HTML kode for en liste med documenter
+        // Funksjon som lager HTML kode for en liste med dokumenter
         async function documentsToHTML(photosDocuments) {
-            // Sletter HTML som var i main
+            // Fjerner gammel HTML kode
             main.innerHTML = "";
 
-            // Går igjennom alle documentene med en for-løkke
+            // Går gjennom hvert enkelt dokument
             for (let doc of photosDocuments.docs) {
                 console.log(doc.id, "=>", doc.data());
 
-                // Henter ut dataene fra et document
+                // Henter ut dataene fra et dokument
                 let data = doc.data();
 
                 let photoId = doc.id;
@@ -126,6 +128,8 @@
                 let userID = data.uid;
 
                 let postTime = data.timestamp.toDate();
+
+                // Henter dataene fra brukeren som la ut bildet
 
                 let userDocument = await db.collection("users").doc(userID).get();
 
@@ -139,31 +143,35 @@
 
                 // Skriver dataene til HTML
                 main.innerHTML += `
-        <article class="postarticle">
-            <div class="uploaduser">
-                <div class="uploaduserinfo" onclick="viewUser('${postUser}');">
-                <img src="${postUserPhoto}">
-                <p>
-                    ${data.uploader}
-                </p>
-                </div>
-                <p class="timestamp">
-                    posted this ${postTime}
-                </p>
-            </div>
-            <h4 class="pcategory" onclick="${data.category}();">#${data.category}</h4>
-            <p class="captiontext">
-                ${caption}
-            </p>
-            <div class="photocontainer">
-                <img src="${data.URL}">
-            </div>
-        </article>`;
+                <article class="postarticle">
+                    <div class="uploaduser">
+                        <div class="uploaduserinfo" onclick="viewUser('${postUser}');">
+                            <img src="${postUserPhoto}">
+                            <p>
+                            ${data.uploader}
+                            </p>
+                        </div>
+                        <p class="timestamp">
+                        posted this ${postTime}
+                        </p>
+                    </div>
+                    <h4 class="pcategory" onclick="${data.category}();">#${data.category}</h4>
+                    <p class="captiontext">
+                    ${caption}
+                    </p>
+                    <div class="photocontainer">
+                        <img src="${data.URL}">
+                    </div>
+                </article>`;
             }
         };
 
+
+        // Kaller automatisk på funksjonen som viser bilder fra nyest til eldst
         showPhotos();
 
+
+        // Setter ulike funsjoner for ulike hashtags som åpner nye sider
         function lifestyle() {
             window.location.href = "hashtags/lifestyle.html";
         };
@@ -188,12 +196,15 @@
             window.location.href = "hashtags/none.html";
         };
 
+        // Trekker ut data om hvem som har postet bildet og så tar deg til siden til brukeren
         async function viewUser(postUser) {
+            // Henter cookies som er lagret om brukeren som la ut bildet
             await Cookies.set("viewUser", postUser, { expires: 7 });
             console.log("now viewing " + postUser);
             window.location.href = "userpage.html";
         };
 
+        // Feilmelding ved bruk av searchbar
         function errorSearch() {
             alert("Due to limiting the data reads from the database, the search function is not yet available :(")
         }

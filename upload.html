@@ -70,6 +70,7 @@
     </header>
     <main>
         <div class="uploadbox">
+            <!--Skriver litt info om uploading-->
             <div class="uploadinfo">
                 <h3>
                     Uploading your photos
@@ -85,25 +86,28 @@
                 <h3 id="uploadtitle">
                     Upload form
                 </h3>
-                <div class="choosefile">
-                    <div class="dropdown">
-                        <button class="dropbtn" id="dropdown">Choose category</button>
-                        <div class="dropdown-content">
-                            <a href="#" onclick="none();">None</a>
-                            <a href="#" onclick="lifeStyle();">Lifestyle</a>
-                            <a href="#" onclick="nature();">Nature</a>
-                            <a href="#" onclick="food();">Food</a>
-                            <a href="#" onclick="sports();">Sports</a>
-                            <a href="#" onclick="gaming();">Gaming</a>
+                <!--Lager et skjema hvor man kan laste opp filer-->
+                <form action="">
+                    <div class="choosefile">
+                        <div class="dropdown">
+                            <button class="dropbtn" id="dropdown">Choose category</button>
+                            <div class="dropdown-content">
+                                <a href="#" onclick="none();">None</a>
+                                <a href="#" onclick="lifeStyle();">Lifestyle</a>
+                                <a href="#" onclick="nature();">Nature</a>
+                                <a href="#" onclick="food();">Food</a>
+                                <a href="#" onclick="sports();">Sports</a>
+                                <a href="#" onclick="gaming();">Gaming</a>
+                            </div>
                         </div>
+                        <label for=fileInput class="upload-group">
+                            <i class="fas fa-upload">
+                                <input type="file" id="fileInput" onchange="displayPhotoName();">
+                            </i>
+                        </label>
+                        <button id="submitfile" onclick="uploadFile();">Submit</button>
                     </div>
-                    <label for=fileInput class="upload-group">
-                        <i class="fas fa-upload">
-                            <input type="file" id="fileInput" onchange="displayPhotoName();">
-                        </i>
-                    </label>
-                    <button id="submitfile" onclick="uploadFile();">Submit</button>
-                </div>
+                </form>
                 <input type="text" id="captioninput" placeholder="Type your caption here" maxlength="40">
                 <p>
                     Upload photos to our database using this form. If none of the categories listed applies to your
@@ -114,6 +118,7 @@
     </main>
     <script>
 
+        // Legger inn funksjoner som setter categorien på opplastningen
         function none() {
             document.getElementById("dropdown").innerHTML = ("None");
             photocategory = "none"
@@ -151,6 +156,7 @@
             document.getElementById("uploadtitle").innerHTML = ("Upload form (" + filename + ")");
         };
 
+        // Lager en funksjon som tar data fra HTML og sender den videre til å skrive data
         function uploadFile() {
             // Sjekker om brukeren er innlogget ved å sjekke om cookien "logged" finnes
             if (Cookies.get("logged")) {
@@ -174,7 +180,7 @@
                         photoURL = downloadURL;
                         writePhotoData(filename);
                         document.getElementById("uploadtitle").innerHTML = ("Upload form");
-                        
+
                     });
                 });
             } else {
@@ -184,6 +190,7 @@
         };
 
 
+        // Skriver inn dataene til firestore
         async function writePhotoData(filename) {
             var cookiesName = Cookies.get("cookiesName");
             var cookiesMail = Cookies.get("cookiesMail");
@@ -195,7 +202,7 @@
                 likes: 0,
                 category: photocategory,
                 URL: photoURL,
-                uid:cookiesUID,
+                uid: cookiesUID,
                 caption: cap
             });
             alert("The photo was successfully uploaded!");
