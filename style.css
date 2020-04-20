@@ -452,21 +452,6 @@ body{
     height: 30px;
 }
 
-#savebutton{
-    font-family: 'Nunito', sans-serif;
-    color: #fff;
-    background-color: rgb(48, 132, 228);
-    padding: 13px;
-    border-radius: 7px;
-    box-shadow: 0 0 3px #3e444d;
-    transition: 0.2s;
-}
-
-#savebutton:hover{
-    padding: 16px;
-    cursor: pointer;
-}
-
 #savechanges{
     position: absolute;
     bottom: 40px;
@@ -710,4 +695,37 @@ body{
     width: 200px;
     margin-top: 20px;
     transition: 0.4s;
+}
+
+#deleteaccount{
+    text-align: center;
+    margin-top: 200px;
+}
+
+#deleteaccount > p {
+    padding-bottom: 20px;
+    color: #c2c2c2;
+}
+
+.acceptbutton{
+    font-family: 'Nunito', sans-serif;
+    color: #fff;
+    background-color: rgb(48, 132, 228);
+    padding: 13px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 7px;
+    box-shadow: 0 0 3px #3e444d;
+    transition: 0.2s;
+    margin: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.acceptbutton:hover{
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-right: 23px;
+    padding-left: 23px;
+    cursor: pointer;
 }

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Socifeed</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/04dbcf7e87.js" crossorigin="anonymous"></script>
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCtEQ0WQMgr4AHTjc0AsV8SqHQMcuh63BM",
+            authDomain: "informasjonsteknologi-1-15c1e.firebaseapp.com",
+            databaseURL: "https://informasjonsteknologi-1-15c1e.firebaseio.com",
+            projectId: "informasjonsteknologi-1-15c1e",
+            storageBucket: "informasjonsteknologi-1-15c1e.appspot.com",
+            messagingSenderId: "183718111388",
+            appId: "1:183718111388:web:22ed9bacef400d44aaa559",
+            measurementId: "G-XSDFS2SFVJ"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+
+<body>
+    <main>
+        <div id="deleteaccount">
+            <h3>
+                Are you sure you want to delete your account?
+            </h3>
+            <p>
+                (All your photos will be deleted with it!)
+            </p>
+            <div>
+                <label for="" class="acceptbutton" onclick="returnBack();">No</label>
+                <label for="" class="acceptbutton" onclick="deleteAccount();">Yes</label>
+            </div>
+        </div>
+    </main>
+    <script>
+
+        let db = firebase.firestore();
+
+        function returnBack() {
+            window.location.href = "profile.html";
+        };
+
+        async function deleteAccount() {
+
+            let userID = Cookies.get("uid");
+
+            await db.collection("photos").doc().where("uid", "==", userID).delete().then(function () {
+                console.log("All your photos were successfully deleted!");
+            });
+
+            await db.collection("users").doc(userID).delete().then(function () {
+                console.log("Your account were successfully deleted!");
+                Cookies.remove("uid");
+                Cookies.remove("cookiesName");
+                Cookies.remove("cookiesMail");
+                Cookies.remove("cookiesURL");
+                Cookies.remove("logged");
+                alert("All cookies were deleted!")
+                alert("Your account was successfully deleted!")
+                window.location.href = "profile.html";
+            });
+        };
+
+    </script>
+</body>
+
+</html>
