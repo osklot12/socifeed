@@ -241,14 +241,10 @@
         async function checkBio() {
             let userid = Cookies.get("uid");
 
-            const usersRef = await db.collection('bios').doc('userid').get()
-                .then((docSnapshot) => {
-                    if (docSnapshot.exists) {
-                        putInBio();
-                    } else {
-                        document.getElementById("biography").style.display = "none";
-                    }
-                });
+            let userBio = await db.collection('bios').doc('userid').get();
+            if (userBio.exists === true){
+                console.log("You fuckin made it!")
+            }
         };
 
         checkBio();
