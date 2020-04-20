@@ -55,7 +55,7 @@
             </p>
         </div>
     </section>
-    <main>
+    <main class="tagmain">
 
     </main>
     <script>
@@ -73,6 +73,92 @@
             console.log(size);
             document.getElementById("accountCount").innerHTML = ("Uploaded photos: " + "<b>" + size + "</b>");
         };
+
+        async function showPhotos() {
+            console.log("showing all photos");
+
+            // Henter alle documents i varer collectionen
+            // Bruker await for å vente på at de blir lastet ned til nettleseren
+            let photosDocuments = await photos.get();
+
+            // Kaller en hjelp-funksjon for å viser varene på nettsiden
+            documentsToHTML(photosDocuments)
+        }
+
+        // Funksjon som lager HTML kode for en liste med documenter
+        async function documentsToHTML(photosDocuments, userID) {
+            // Sletter HTML som var i main
+            main.innerHTML = "";
+
+            // Går igjennom alle documentene med en for-løkke
+            for (let doc of photosDocuments.docs) {
+                console.log(doc.id, "=>", doc.data());
+
+                // Henter ut dataene fra et document
+                let data = doc.data();
+
+                photoID = doc.id;
+
+                let posttime = data.timestamp.toDate();
+
+                let userDocument = await db.collection("users").doc(userID).get();
+
+                let postUser = userDocument.id;
+
+                let postUserPhoto = userDocument.data().photo;
+
+                let caption = data.caption;
+
+                let user = userDocument.data().name;
+
+                document.getElementById("accountName").innerHTML = user;
+
+
+
+                // Skriver dataene til HTML
+                main.innerHTML += `
+                <div class="articlecontainer">
+            <article class="tagpostarticle">
+                <div class="uploaduser">
+                    <div class="uploaduserinfo">
+                        <img src="${postUserPhoto}">
+                    <p>
+                        ${data.uploader}
+                    </p>
+                </div>
+                    <p class="timestamp">
+                        posted this ${posttime}
+                    </p>
+                </div>
+                <h4 class="pcategory" onclick="${data.category}();">#${data.category}</h4>
+                <p class="captiontext">
+                ${caption}
+                </p>
+                <div class="photocontainer">
+                    <img src="${data.URL}">
+                </div>
+                <p id="deletephoto" onclick="deletePhoto('${photoID}');">
+                    Delete
+                </p>
+            </article>
+            </div>`;
+            }
+        };
+
+        async function showYourPhotos() {
+
+            console.log("showing your photos");
+
+            let userID = Cookies.get("viewUser");
+
+            console.log(userID);
+
+            let photosDocuments = await photos.orderBy("timestamp", "desc").where("uid", "==", userID).get();
+
+            documentsToHTML(photosDocuments, userID);
+        }
+
+        showYourPhotos();
 
         countPhotos();
 
