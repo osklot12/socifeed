@@ -101,7 +101,7 @@
 <article class="tagpostarticle">
 <div class="uploaduser">
     <div class="uploaduserinfo">
-        <img src="${postUserPhoto}">
+        <img src="${postUserPhoto}" onclick="viewUser('${postUser}');">
     <p>
         ${data.uploader}
     </p>
@@ -132,6 +132,12 @@
         }
 
         showSports();
+
+        async function viewUser(postUser) {
+            await Cookies.set("viewUser", postUser, { expires: 7 });
+            console.log("now viewing " + postUser);
+            window.location.href = "userpage.html";
+        };
 
 
     </script>
