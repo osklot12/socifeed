@@ -67,6 +67,7 @@
             firebase.firestore().collection('bios').doc(userid).set({
                 bio: biography
             });
+            alert("Your biography is updated!")
         };
 
         async function putInBio() {
@@ -77,9 +78,13 @@
 
             let thisUser = await db.collection("bios").doc(userid).get();
 
-            let postWrite = thisUser.bio;
+            let postWrite = thisUser.data().bio;
 
             document.getElementById("bioinput").value = postWrite;
+
+            if (document.getElementById("bioinput").value == "undefined)") {
+                document.getElementById("bioinput").value = "";
+            }
 
         };
 
