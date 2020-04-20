@@ -65,9 +65,9 @@
 
             let userID = Cookies.get("uid");
 
-            db.collection("photos").where("uid", "==", userID).delete().then(function () {
-                console.log("All your photos were successfully deleted!");
-            });
+            let yourPhotos = await db.collection("photos").where("uid", "==", userID).get();
+            console.log(yourPhotos);
+            yourPhotos.detete();
 
             db.collection("users").doc(userID).delete().then(function () {
                 console.log("Your account were successfully deleted!");
