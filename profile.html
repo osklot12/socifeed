@@ -237,19 +237,21 @@
 
         };
 
-        let userid = Cookies.get("uid");
 
-        const usersRef = db.collection('bios').doc('userid')
+        async function checkBio() {
+            let userid = Cookies.get("uid");
 
-        usersRef.get()
-            .then((docSnapshot) => {
-                if (docSnapshot.exists) {
-                    putInBio();
-                } else {
-                    document.getElementById("biography").style.display = "none";
-                }
-            });
+            const usersRef = await db.collection('bios').doc('userid').get()
+                .then((docSnapshot) => {
+                    if (docSnapshot.exists) {
+                        putInBio();
+                    } else {
+                        document.getElementById("biography").style.display = "none";
+                    }
+                });
+        };
 
+        checkBio();
 
 
 
