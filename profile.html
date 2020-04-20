@@ -233,10 +233,10 @@
 
             let postWrite = thisUser.data().bio;
 
-            document.getElementById("bio").value = postWrite;
+            document.getElementById("bio").innerHTML = postWrite;
 
-            if (document.getElementById("bio").value == "undefined)") {
-                document.getElementById("bio").value = "";
+            if (document.getElementById("bio").innerHTML == "undefined") {
+                document.getElementById("bio").innerHTML = "";
                 document.getElementById("biography").style.display = "none";
             }
 
