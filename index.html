@@ -110,7 +110,11 @@
                 // Henter ut dataene fra et document
                 let data = doc.data();
 
+                let photoId = doc.id;
+
                 let userID = data.uid;
+
+                let activeUser = Cookies.get("uid");
 
                 let postTime = data.timestamp.toDate();
 
@@ -124,6 +128,16 @@
 
                 console.log(postUser);
 
+                console.log(activeUser);
+
+                let photoLikes = await db.collection("likes").where("photo", "==", photoId).get();
+
+                let photoStatus = await photoLikes.where("uid", "==", activeUser).get();
+
+                if (photoStatus.exists) {
+                    let likeStyle = "block";
+                    let heartStyle = "none";
+                }
 
 
                 // Skriver dataene til HTML
@@ -146,6 +160,12 @@
             </p>
             <div class="photocontainer">
                 <img src="${data.URL}">
+            </div>
+            <div class="likeDiv">
+                <div class="flexer"></div>
+                <p>2</p>
+                <i class="far fa-heart" onclick="likePhoto();" style="display: ${heartStyle}"></i>
+                <i class="fas fa-heart" id="fullheart"></i>
             </div>
         </article>`;
             }
