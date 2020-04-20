@@ -130,7 +130,7 @@
                 main.innerHTML += `
         <article class="postarticle">
             <div class="uploaduser">
-                <div class="uploaduserinfo">
+                <div class="uploaduserinfo" onclick="viewUser('${postUser}');">
                 <img src="${postUserPhoto}">
                 <p>
                     ${data.uploader}
@@ -175,6 +175,12 @@
 
         function none() {
             window.location.href = "hashtags/none.html";
+        };
+
+        async function viewUser(postUser) {
+            await Cookies.set("viewUser", postUser, { expires: 7 });
+            console.log("now viewing " + postUser);
+            window.location.href = "userpage.html";
         };
 
 
