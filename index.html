@@ -48,7 +48,7 @@
             </a>
             <div class="searchbar">
                 <input type="text" class="searchtxt" name="" placeholder="Find users">
-                <a class="searchbtn" href="">
+                <a class="searchbtn" href="" onclick="errorSearch();">
                     <i class="fas fa-search"></i>
                 </a>
             </div>
@@ -64,9 +64,8 @@
             </a>
         </div>
         <div class="sub_header">
-            <a href="#">Feed</a>
-            <a href="#">Trending</a>
-            <a href="#">Discover</a>
+            <a href="#" onclick="showPhotos();">Newest</a>
+            <a href="#" onclick="showOldPhotos();">Oldest</a>
         </div>
     </header>
     <main class="indexmain">
@@ -92,6 +91,17 @@
             // Henter alle documents i varer collectionen
             // Bruker await for å vente på at de blir lastet ned til nettleseren
             let photosDocuments = await photos.orderBy("timestamp", "desc").get();
+
+            // Kaller en hjelp-funksjon for å viser varene på nettsiden
+            documentsToHTML(photosDocuments)
+        }
+
+        async function showOldPhotos() {
+            console.log("showing all photos");
+
+            // Henter alle documents i varer collectionen
+            // Bruker await for å vente på at de blir lastet ned til nettleseren
+            let photosDocuments = await photos.orderBy("timestamp", "asc").get();
 
             // Kaller en hjelp-funksjon for å viser varene på nettsiden
             documentsToHTML(photosDocuments)
@@ -183,6 +193,9 @@
             window.location.href = "userpage.html";
         };
 
+        function errorSearch() {
+            alert("Due to limiting the data reads from the database, the search function is not yet available :(")
+        }
 
     </script>
 
