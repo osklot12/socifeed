@@ -64,7 +64,7 @@
             let userid = Cookies.get("uid");
             let biography = await document.getElementById("bioinput").value;
 
-            firebase.firestore().collection('bios').doc(uid).set({
+            firebase.firestore().collection('bios').doc(userid).set({
                 bio: biography
             });
         };
