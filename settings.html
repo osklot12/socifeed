@@ -62,22 +62,28 @@
         async function writeBio(user) {
 
             let userid = Cookies.get("uid");
-            let biography =  await document.getElementById("bioinput").value;
+            let biography = await document.getElementById("bioinput").value;
 
             firebase.firestore().collection('bios').doc(uid).set({
                 bio: biography
             });
         };
 
-        let userBios = await db.collection("bios").get();
+        async function putInBio() {
 
-        let userid = Cookies.get("uid");
+            let userBios = await db.collection("bios").get();
 
-        let thisUser = await db.collection("bios").doc(userid).get();
+            let userid = Cookies.get("uid");
 
-        let postWrite = thisUser.bio;
+            let thisUser = await db.collection("bios").doc(userid).get();
 
-        document.getElementById("bioinput").value = postWrite;
+            let postWrite = thisUser.bio;
+
+            document.getElementById("bioinput").value = postWrite;
+
+        };
+
+        putInBio();
 
 
 
