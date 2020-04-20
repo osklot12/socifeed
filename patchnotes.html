@@ -7,8 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Socifeed</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <script src="https://use.fontawesome.com/70ccd8c446.js"></script>
     <script src="https://kit.fontawesome.com/04dbcf7e87.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
     <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
@@ -40,58 +41,47 @@
 
 <body>
     <header class="settingheader">
-        <a href="profile.html" class="backbutton">Back</a>
+        <a href="index.html" class="backbutton">Back</a>
     </header>
-    <main>
-        <div id="settingsbox">
-            <h3>
-                Biography
-            </h3>
-            <input type="text" maxlength="80" placeholder="Write your bio here" id="bioinput">
-            <div id="savechanges">
-                <label for="" id="savebutton" onclick="writeBio();">Save changes</label>
+    <main class="patchmain">
+        <h3 class="hashtagtitle">Patch Notes</h3>
+        <div class="activeusers">
+            <p id="usernumber">
+
+            </p>
+            <p id="numberdes">
+                currently registered users
+            </p>
+        </div>
+        <div class="patchblock">
+            <div class="patchheader">
+                <h3 class="patchtitle">
+                    Socifeed Beta
+                </h3>
             </div>
+            <p class="patchtext">
+                The release of Socifeed Beta gives you: <br> <br>
+                    * Abililty to share photos with caption <br>
+                    * Manage your photos within your profile <br>
+                    * Delete your profile <br>
+                    * View hashtags <br>
+                    * View other users photos <br>
+            </p>
         </div>
     </main>
 
     <script>
 
         let db = firebase.firestore();
-        let collection = db.collection("bios");
 
-        async function writeBio(user) {
-
-            let userid = Cookies.get("uid");
-            let biography = await document.getElementById("bioinput").value;
-
-            firebase.firestore().collection('bios').doc(userid).set({
-                bio: biography
-            });
-            alert("Your biography is updated!")
+        async function countUsers() {
+            let snap = await db.collection("users").get();
+            size = snap.size;
+            console.log(size);
+            document.getElementById("usernumber").innerHTML = (size);
         };
 
-        async function putInBio() {
-
-            let userBios = await db.collection("bios").get();
-
-            let userid = Cookies.get("uid");
-
-            let thisUser = await db.collection("bios").doc(userid).get();
-
-            let postWrite = thisUser.data().bio;
-
-            document.getElementById("bioinput").value = postWrite;
-
-            if (document.getElementById("bioinput").value == "undefined") {
-                document.getElementById("bioinput").value = "";
-            }
-
-        };
-
-        putInBio();
-
-
-
+        countUsers();
 
     </script>
 
