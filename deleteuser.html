@@ -67,7 +67,7 @@
 
             let yourPhotos = await db.collection("photos").where("uid", "==", userID).get();
             console.log(yourPhotos);
-            yourPhotos.detete();
+            yourPhotos.delete();
 
             db.collection("users").doc(userID).delete().then(function () {
                 console.log("Your account were successfully deleted!");
