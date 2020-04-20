@@ -42,12 +42,12 @@
     <header class="settingheader">
         <a href="profile.html" class="backbutton">Back</a>
     </header>
-    <section>
+    <section class="accountDisplay">
         <div class="accountPhoto">
-            <img src="" alt="">
+            <img src="" alt="" id="accountPhoto">
         </div>
         <div class="accountDetails">
-            <p class="accountName">
+            <p id="accountName">
 
             </p>
             <p id="accountCount">
@@ -111,9 +111,11 @@
 
                 let user = userDocument.data().name;
 
+                console.log(user);
+
                 document.getElementById("accountName").innerHTML = user;
 
-
+                document.getElementById("accountPhoto").src = postUserPhoto;
 
                 // Skriver dataene til HTML
                 main.innerHTML += `
