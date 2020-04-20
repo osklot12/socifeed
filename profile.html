@@ -152,11 +152,11 @@
         };
 
         function writeUserData(user) {
-                firebase.firestore().collection('users').doc(user.uid).set({
-                    name: user.displayName,
-                    email: user.email,
-                    photo: user.photoURL,
-                });
+            firebase.firestore().collection('users').doc(user.uid).set({
+                name: user.displayName,
+                email: user.email,
+                photo: user.photoURL,
+            });
         };
 
         // Endrer litt på siden for å vise at man er logget inn
@@ -220,11 +220,32 @@
             let snap = await db.collection("photos").where("uid", "==", useridbro).get();
             size = snap.size;
             console.log(size);
-            document.getElementById("user_picturecount").innerHTML = ("Uploaded photos: " + "<b>" + size +"</b>");
+            document.getElementById("user_picturecount").innerHTML = ("Uploaded photos: " + "<b>" + size + "</b>");
         };
 
+        async function putInBio() {
 
-  
+            let userBios = await db.collection("bios").get();
+
+            let userid = Cookies.get("uid");
+
+            let thisUser = await db.collection("bios").doc(userid).get();
+
+            let postWrite = thisUser.data().bio;
+
+            document.getElementById("bio").value = postWrite;
+
+            if (document.getElementById("bio").value == "undefined)") {
+                document.getElementById("bio").value = "";
+                document.getElementById("biography").style.display = "none";
+            }
+
+        };
+
+        putInBio();
+
+
+
 
 
     </script>
