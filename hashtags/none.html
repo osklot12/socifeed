@@ -126,7 +126,7 @@
 
             console.log("showing food photos");
 
-            let photosDocuments = await photos.where("category", "==", "none").get();
+            let photosDocuments = await photos.orderBy("timestamp", "desc").where("category", "==", "none").get();
 
             documentsToHTML(photosDocuments);
         }

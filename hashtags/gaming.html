@@ -126,7 +126,7 @@
 
             console.log("showing gaming photos");
 
-            let photosDocuments = await photos.where("category", "==", "gaming").get();
+            let photosDocuments = await photos.orderBy("timestamp", "desc").where("category", "==", "gaming").get();
 
             documentsToHTML(photosDocuments);
         }
